@@ -1,0 +1,234 @@
+{
+    "packages": [
+        {
+            "name": "priyomukul/wp-notice",
+            "version": "v2.x-dev",
+            "version_normalized": "2.9999999.9999999.9999999-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:priyomukul/wp-notice.git",
+                "reference": "5471f3262e583ebcba56062d84faecc910bd04d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/priyomukul/wp-notice/zipball/5471f3262e583ebcba56062d84faecc910bd04d6",
+                "reference": "5471f3262e583ebcba56062d84faecc910bd04d6",
+                "shasum": ""
+            },
+            "time": "2023-12-27T06:49:41+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "PriyoMukul\\WPNotice\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Priyo Mukul",
+                    "email": "17237437+priyomukul@users.noreply.github.com"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/priyomukul/wp-notice/tree/v2",
+                "issues": "https://github.com/priyomukul/wp-notice/issues"
+            },
+            "install-path": "../priyomukul/wp-notice"
+        },
+        {
+            "name": "wpdeveloper/lib-settings",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WPDevelopers/lib-settings.git",
+                "reference": "5ddf9c46be5e06d27ac3eb1860fa6e2cb2b9b7df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WPDevelopers/lib-settings/zipball/5ddf9c46be5e06d27ac3eb1860fa6e2cb2b9b7df",
+                "reference": "5ddf9c46be5e06d27ac3eb1860fa6e2cb2b9b7df",
+                "shasum": ""
+            },
+            "require": {
+                "wpdeveloper/lib-utility": "dev-master"
+            },
+            "require-dev": {
+                "justinrainbow/json-schema": "1.1.*"
+            },
+            "time": "2024-05-13T07:52:33+00:00",
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "static/scripts/settings.js"
+                    ],
+                    "templates": [
+                        "static/views/new-installation.xhtml"
+                    ],
+                    "files": [
+                        "static/schemas/settings.json"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "lib"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Potanin",
+                    "email": "andy.potanin@usabilitydynamics.com",
+                    "homepage": "https://www.usabilitydynamics.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Maxim Peshkov",
+                    "email": "maxim.peshkov@usabilitydynamics.com",
+                    "homepage": "https://www.usabilitydynamics.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anton Korotkov",
+                    "email": "anton.korotkov@usabilitydynamics.com",
+                    "homepage": "https://www.usabilitydynamics.com",
+                    "role": "Developer"
+                }
+            ],
+            "homepage": "https://github.com/udx/lib-settings",
+            "keywords": [
+                "settings"
+            ],
+            "support": {
+                "source": "https://github.com/WPDevelopers/lib-settings/tree/master"
+            },
+            "install-path": "../wpdeveloper/lib-settings"
+        },
+        {
+            "name": "wpdeveloper/lib-utility",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:WPDevelopers/lib-utility.git",
+                "reference": "9b8ebd1ec89f2c0ae5c4207cfe7b1daddf592fe1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WPDevelopers/lib-utility/zipball/9b8ebd1ec89f2c0ae5c4207cfe7b1daddf592fe1",
+                "reference": "9b8ebd1ec89f2c0ae5c4207cfe7b1daddf592fe1",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*"
+            },
+            "time": "2024-05-13T07:52:38+00:00",
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "installer-name": "lib-utility",
+                "component": {
+                    "name": "utility",
+                    "scripts": [
+                        "scripts/*.js"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "lib"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Potanin",
+                    "email": "andy.potanin@usabilitydynamics.com",
+                    "homepage": "https://www.usabilitydynamics.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Maxim Peshkov",
+                    "email": "maxim.peshkov@usabilitydynamics.com",
+                    "homepage": "https://www.usabilitydynamics.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anton Korotkov",
+                    "email": "anton.korotkov@usabilitydynamics.com",
+                    "homepage": "https://www.usabilitydynamics.com",
+                    "role": "Developer"
+                }
+            ],
+            "keywords": [
+                "job",
+                "process",
+                "utility"
+            ],
+            "support": {
+                "source": "https://github.com/WPDevelopers/lib-utility/tree/master",
+                "issues": "https://github.com/WPDevelopers/lib-utility/issues"
+            },
+            "install-path": "../wpdeveloper/lib-utility"
+        },
+        {
+            "name": "wpdeveloper/query-builder",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WPDevelopers/query-builder.git",
+                "reference": "ea37ced8aabf66712da49b6744dddbde5fe80505"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WPDevelopers/query-builder/zipball/ea37ced8aabf66712da49b6744dddbde5fe80505",
+                "reference": "ea37ced8aabf66712da49b6744dddbde5fe80505",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "time": "2024-05-13T09:54:37+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "WPDeveloper\\QueryBuilder\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "WPDeveloper",
+                    "email": "support@wpdeveloper.com"
+                }
+            ],
+            "description": "The simple ORM for WordPress Query",
+            "keywords": [
+                "database",
+                "query builder",
+                "wordpress"
+            ],
+            "support": {
+                "source": "https://github.com/WPDevelopers/query-builder/tree/main",
+                "issues": "https://github.com/WPDevelopers/query-builder/issues"
+            },
+            "install-path": "../wpdeveloper/query-builder"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

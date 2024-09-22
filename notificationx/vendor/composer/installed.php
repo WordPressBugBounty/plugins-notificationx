@@ -1,0 +1,65 @@
+<?php return array(
+    'root' => array(
+        'name' => 'wpdeveloper/notificationx',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '41e925ef6b48080026eeec5394295deee8a3c128',
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'priyomukul/wp-notice' => array(
+            'pretty_version' => 'v2.x-dev',
+            'version' => '2.9999999.9999999.9999999-dev',
+            'reference' => '5471f3262e583ebcba56062d84faecc910bd04d6',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../priyomukul/wp-notice',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'wpdeveloper/lib-settings' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '5ddf9c46be5e06d27ac3eb1860fa6e2cb2b9b7df',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../wpdeveloper/lib-settings',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+        'wpdeveloper/lib-utility' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '9b8ebd1ec89f2c0ae5c4207cfe7b1daddf592fe1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../wpdeveloper/lib-utility',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+        'wpdeveloper/notificationx' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '41e925ef6b48080026eeec5394295deee8a3c128',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'wpdeveloper/query-builder' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'ea37ced8aabf66712da49b6744dddbde5fe80505',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../wpdeveloper/query-builder',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+    ),
+);
