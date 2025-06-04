@@ -34,7 +34,7 @@ class GlobalFields {
      * Initially Invoked when initialized.
      */
     public function __construct() {
-        
+
         // dump(Rules::logicalRule([ Rules::is('test'), Rules::is('test2') ]));
     }
 
@@ -97,7 +97,7 @@ class GlobalFields {
                                     // 'label'   => "Notification Type",
                                     'name'    => "type",
                                     'type'    => "radio-card",
-                                    'default' => "comments",
+                                    'default' => "notification_bar",
                                     'style'   => [
                                         'label' => [
                                             'position' => 'top'
@@ -225,7 +225,10 @@ class GlobalFields {
                                         ] ),
                                     ]
                                 ],
-                            ]
+                            ],
+                            // 'rules'   => Rules::logicalRule([
+                            //     Rules::is('type', 'notification_bar', true),
+                            // ]),
                         ],
                     ]),
                     // 'rules'   => Rules::is('source', false)
@@ -245,6 +248,23 @@ class GlobalFields {
                             'name' => 'design_error',
                             'messages' => apply_filters('design_error_message', []),
                             'rules' => '',
+                        ],
+                        "main_preview" => [
+                            'label'  => __("Preview", 'notificationx'),
+                            'name'   => "main_preview",
+                            'type'   => "section",
+                            'priority' => 1,
+                            'fields' => [
+                                'preview_field' => [
+                                    'name'     => "preview_field",
+                                    'type'     => "preview",
+                                    'label'    => __('Preview', 'notificationx'),
+                                    'priority' => 10,
+                                ],
+                            ],
+                            'rules'   => Rules::logicalRule([
+                                Rules::is( 'type', 'notification_bar' ),
+                            ]),
                         ],
                        "themes" => [
                             'label'  => __("Themes", 'notificationx'),
@@ -424,12 +444,25 @@ class GlobalFields {
                             'label' => __('Advanced Design', 'notificationx'),
                             'type' => 'section',
                             'name' => 'advance_design_section',
-                            'classes' => 'wprf-no-bg',
+                            'dependency_class'  => [
+                                'name'     => 'advance_edit',
+                                'is'       => true,
+                                'classes'  => 'advanced_active',
+                                'selector' => '#advance_design_section',
+                            ],
+                            // 'classes' => 'wprf-no-bg',
                             'rules'   => Rules::logicalRule([
-                                Rules::is('advance_edit', true),
+                                // Rules::is('advance_edit', true),
                                 Rules::is('themes_tab', 'for_desktop'),
                              ]),
                             'fields' => [
+                                "advance_edit" => [
+                                    'label'    => __("Advanced Toggle", 'notificationx'),
+                                    'name'     => "advance_edit",
+                                    'type'     => "toggle",
+                                    'default'  => false,
+                                    'priority' => 1,
+                                ],
                                 "design" => [
                                     'label'    => __("Design", 'notificationx'),
                                     'name'     => "design",
@@ -572,7 +605,7 @@ class GlobalFields {
                                     'label'    => __('Custom CSS', 'notificationx'),
                                     'name'     => "custom_css",
                                     'type'     => "section",
-                                    'priority' => 16,
+                                    'priority' => 150,
                                     'rules'    => Rules::is( 'advance_edit', true ),
                                     'fields'   => [
                                         [
@@ -602,6 +635,23 @@ class GlobalFields {
                     ],
                     'classes' => "content_tab",
                     'fields'  => apply_filters('nx_content_fields', [
+                        "main_preview" => [
+                            'label'  => __("Preview", 'notificationx'),
+                            'name'   => "main_preview",
+                            'type'   => "section",
+                            'priority' => 1,
+                            'fields' => [
+                                'preview_field' => [
+                                    'name'     => "preview_field",
+                                    'type'     => "preview",
+                                    'label'    => __('Preview', 'notificationx'),
+                                    'priority' => 10,
+                                ],
+                            ],
+                             'rules'   => Rules::logicalRule([
+                                Rules::is( 'type', 'notification_bar' ),
+                            ]),
+                        ],
                        'content' => apply_filters('nx_content_field', [
                             'label'    => __("Content", 'notificationx'),
                             'name'     => "content",
@@ -959,6 +1009,23 @@ class GlobalFields {
                     ],
                     'classes' => "manager_tab",
                     'fields'  => apply_filters('nx_manager_fields', [
+                        "main_preview" => [
+                            'label'  => __("Preview", 'notificationx'),
+                            'name'   => "main_preview",
+                            'type'   => "section",
+                            'priority' => 1,
+                            'fields' => [
+                                'preview_field' => [
+                                    'name'     => "preview_field",
+                                    'type'     => "preview",
+                                    'label'    => __('Preview', 'notificationx'),
+                                    'priority' => 10,
+                                ],
+                            ],
+                            'rules'   => Rules::logicalRule([
+                                Rules::is( 'type', 'notification_bar' ),
+                            ]),
+                        ],
                         'general_settngs'  => [
                             'label' => __("General Settings", 'notificationx'),
                             'id'    => "general_settngs",
@@ -1388,6 +1455,23 @@ class GlobalFields {
                     ],
                     'classes' => "display_tab",
                     'fields'  => apply_filters('nx_display_fields', [
+                        "main_preview" => [
+                            'label'  => __("Preview", 'notificationx'),
+                            'name'   => "main_preview",
+                            'type'   => "section",
+                            'priority' => 1,
+                            'fields' => [
+                                'preview_field' => [
+                                    'name'     => "preview_field",
+                                    'type'     => "preview",
+                                    'label'    => __('Preview', 'notificationx'),
+                                    'priority' => 10,
+                                ],
+                            ],
+                            'rules'   => Rules::logicalRule([
+                                Rules::is( 'type', 'notification_bar' ),
+                            ]),
+                        ],
                         "image-section" => [
                             'label' => __("IMAGE", 'notificationx'),
                             'name'  => "image-section",
@@ -1618,6 +1702,23 @@ class GlobalFields {
                     ],
                     'classes' => "customize_tab",
                     'fields'  => apply_filters('nx_customize_fields', [
+                        "main_preview" => [
+                            'label'  => __("Preview", 'notificationx'),
+                            'name'   => "main_preview",
+                            'type'   => "section",
+                            'priority' => 1,
+                            'fields' => [
+                                'preview_field' => [
+                                    'name'     => "preview_field",
+                                    'type'     => "preview",
+                                    'label'    => __('Preview', 'notificationx'),
+                                    'priority' => 10,
+                                ],
+                            ],
+                            'rules'   => Rules::logicalRule([
+                                Rules::is( 'type', 'notification_bar' ),
+                            ]),
+                        ],
                         'appearance' => [
                             'label'  => __("Appearance", 'notificationx'),
                             'name'   => "appearance",
@@ -1774,7 +1875,7 @@ class GlobalFields {
                                         'close_button_mobile' => [
                                             'name'        => "close_button_mobile",
                                             'type'        => "checkbox",
-                                            'default'     => 0,
+                                            'default'     => 1,
                                             'priority'    => 72,
                                             'description' => __('Mobile', 'notificationx'),
                                         ],
@@ -2091,7 +2192,7 @@ class GlobalFields {
                                             'description' => '',
                                             'max'         => 59,
                                             'min'         => 0,
-                                        ],  
+                                        ],
                                     ]
                                 ],
                                 'loop' => [

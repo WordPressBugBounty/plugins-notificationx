@@ -19,7 +19,7 @@ use NotificationX\FrontEnd\Preview;
 use NotificationX\GetInstance;
 
 use Elementor\Core\Files\CSS\Post as Post_CSS;
-
+use NotificationX\NotificationX;
 
 /**
  * PressBar Extension
@@ -66,25 +66,35 @@ class PressBar extends Extension {
 
         $this->themes = [
             'theme-one'   => [
-                'source' => NOTIFICATIONX_ADMIN_URL . 'images/extensions/themes/nx-bar-theme-one.jpg',
-                'column'  => "12",
+                'source'        => NOTIFICATIONX_ADMIN_URL . 'images/extensions/themes/nx-bar-theme-one.jpg',
+                'column'        => "12",
+                'defaults' => [
+                    'enable_countdown' => 1,
+                ],
             ],
             'theme-two'   => [
                 'source' => NOTIFICATIONX_ADMIN_URL . 'images/extensions/themes/nx-bar-theme-two.jpg',
                 'column'  => "12",
+                'defaults' => [
+                    'enable_countdown' => 0,
+                ],
             ],
             'theme-three' => [
                 'source' => NOTIFICATIONX_ADMIN_URL . 'images/extensions/themes/nx-bar-theme-three.jpg',
                 'column'  => "12",
+                'defaults' => [
+                    'enable_countdown' => 1,
+                ],
             ],
         ];
         $this->bar_themes = array(
             'theme-one'   => [
-                'label'  => 'theme-one',
-                'value'  => 'theme-one',
-                'icon'   => NOTIFICATIONX_ADMIN_URL . 'images/extensions/themes/bar-elementor/theme-one.jpg',
-                'column' => '12',
-                "title"  => "Nx Theme One",
+                'label'         => 'theme-one',
+                'value'         => 'theme-one',
+                'icon'          => NOTIFICATIONX_ADMIN_URL . 'images/extensions/themes/bar-elementor/theme-one.jpg',
+                'column'        => '12',
+                "title"         => "Nx Theme One",
+                'enable_coupon' => true,
             ],
             'theme-two'   => [
                 'label'  => 'theme-two',
@@ -234,6 +244,7 @@ class PressBar extends Extension {
         add_filter('nx_customize_fields', [$this, 'customize_fields']);
         add_filter('nx_content_fields', [$this, 'content_fields'], 22);
         add_filter('nx_display_fields', [$this, 'hide_image_field']);
+        add_filter('nx_display_fields', [$this, 'display_fields']);
         add_filter('nx_source_trigger', [$this, '_source_trigger'], 20);
     }
 
@@ -304,11 +315,20 @@ class PressBar extends Extension {
         $_fields['design']           = Rules::is('source', $this->id, true, $_fields['design']);
         $_fields['typography']       = Rules::is('source', $this->id, true, $_fields['typography']);
         $_fields['image-appearance'] = Rules::is('source', $this->id, true, $_fields['image-appearance']);
+        $_fields['bar_editor']       = [
+            'label'  => "Editor",
+            'name'   => "bar_editor",
+            'type'   => "section",
+            'priority' => 2,
+            'rules'  => ["and", ['is', 'source', $this->id], ['is', 'advance_edit', true]],
+            'fields' => [],
+        ];
         $_fields["bar_design"]       = [
             // @todo Move to extension.
             'label'  => "Design",
             'name'   => "bar_design",
             'type'   => "section",
+            'priority' => 5,
             'rules'  => ["and", ['is', 'source', $this->id], ['is', 'advance_edit', true]],
             'fields' => [
                 [
@@ -436,7 +456,7 @@ class PressBar extends Extension {
                                     ]),
                                 ],
                             ]
-                        ]   
+                        ]
                     ]
                 ],
             ],
@@ -447,6 +467,7 @@ class PressBar extends Extension {
             'label'  => __('Typography', 'notificationx'),
             'name'   => "bar_typography",
             'type'   => "section",
+            'priority' => 10,
             'rules'  => ["and", ['is', 'source', $this->id], ['is', 'advance_edit', true]],
             'fields' => [
                 [
@@ -464,18 +485,6 @@ class PressBar extends Extension {
         $is_installed = Helper::is_plugin_installed('elementor/elementor.php');
         $install_activate_text = $is_installed ? __("Activate", 'notificationx') : __("Install", 'notificationx');
 
-        $fields['themes']['fields'][] = array(
-            'name'    => 'nx-bar_with_elementor_install_message',
-            'type'    => 'message',
-            'class'   => 'nx-warning',
-            'html'    => true,
-            'message' => sprintf(__("To Design Notification Bar with <strong>Elementor Page Builder</strong>, You need to %s the Elementor first: &nbsp;&nbsp;&nbsp;", 'notificationx'), $install_activate_text),
-            'rules'   => Rules::logicalRule([
-                Rules::is('is_elementor', false),
-                Rules::is('gutenberg_id', false),
-                Rules::is('source', $this->id),
-            ]),
-        );
 
         $fields['themes']['fields']['nx_bar_import_design'] = [
             'name'   => 'nx_bar_import_design',
@@ -486,13 +495,15 @@ class PressBar extends Extension {
             ]),
         ];
 
-        $import_design = &$fields['themes']['fields']['nx_bar_import_design']['fields'];
+        $import_design = [];
+        // $import_design = $fields['advance_design_section']['fields'];
 
         $import_design[] = [
             'name'   => 'elementor_edit_link',
             'type'   => 'button',
             'text'   => __('Edit With Elementor', 'notificationx'),
             'href'   => -1,
+            'priority' => 1,
             'target' => '_blank',
             'rules'  => Rules::logicalRule([
                 Rules::is('elementor_edit_link', false, true),
@@ -505,6 +516,7 @@ class PressBar extends Extension {
         $import_design[] = [
             'name'  => 'nx-bar_with_elementor-remove',
             'type'  => 'button',
+            'priority' => 2,
             'text'  => __('Remove Elementor Design', 'notificationx'),
             'rules' => Rules::logicalRule([
                 Rules::is('elementor_id', false, true),
@@ -631,6 +643,7 @@ class PressBar extends Extension {
         $import_design[] = [
             'name'        => 'nx-bar_with_elementor_install',
             'type'        => 'button',
+            'priority'    => 3,
             'text'    => [
                 'normal'  => $is_installed ? __('Activate Elementor', 'notificationx') : __('Install Elementor', 'notificationx'),
                 'saved'   => $is_installed ? __('Activated Elementor', 'notificationx') : __('Installed Elementor', 'notificationx'),
@@ -697,6 +710,7 @@ class PressBar extends Extension {
             'type'   => 'button',
             'text'   => __('Edit With Gutenberg', 'notificationx'),
             'href'   => -1,
+            'priority' => 4,
             'target' => '_blank',
             'rules'  => Rules::logicalRule([
                 Rules::is('gutenberg_edit_link', false, true),
@@ -710,6 +724,7 @@ class PressBar extends Extension {
             'name'  => 'nx-bar_with_gutenberg-remove',
             'type'  => 'button',
             'text'  => __('Remove Gutenberg Design', 'notificationx'),
+            'priority' => 5,
             'rules' => Rules::logicalRule([
                 Rules::is('gutenberg_id', false, true),
                 Rules::is('is_gutenberg', true),
@@ -848,8 +863,52 @@ class PressBar extends Extension {
             'name'    => 'is_gb_confirmed',
             'default' => false
         ];
-
+        $import_design[] = array(
+            'name'    => 'nx-bar_with_elementor_install_message',
+            'type'    => 'message',
+            'class'   => 'nx-warning',
+            'html'    => true,
+            'message' => sprintf(__("To Design Notification Bar with <strong>Elementor Page Builder</strong>, You need to %s the Elementor first: &nbsp;&nbsp;&nbsp;", 'notificationx'), $install_activate_text),
+            'rules'   => Rules::logicalRule([
+                Rules::is('is_elementor', false),
+                Rules::is('gutenberg_id', false),
+                Rules::is('source', $this->id),
+            ]),
+        );
+        $_fields['bar_editor']['fields'] = array_merge($_fields['bar_editor']['fields'], $import_design);
         return $fields;
+    }
+
+    /**
+     * Display fields
+    */
+    public function display_fields( $fields ) {
+        $fields['visibility']['fields']['bar_reappearance'] = array(
+            'label'   => __( 'Bar Reappearance', 'notificationx' ),
+            'type'    => 'select',
+            'name'    => 'bar_reappearance',
+            'default' => 'show_welcomebar_every_page',
+            'rules'   => Rules::logicalRule([
+                Rules::is('source', $this->id),
+            ]),
+            'options'  => GlobalFields::get_instance()->normalize_fields([
+                'dont_show_welcomebar'       => __( "Don't show the Bar again for the user", 'notificationx' ),
+                'show_welcomebar_next_visit' => __( 'Show the Bar again when the user visits the website next time', 'notificationx' ),
+                'show_welcomebar_every_page' => __( 'Show the Bar when the user refreshes/goes to another page', 'notificationx' ),
+            ]),
+        );
+        return $fields;
+    }
+
+     /**
+     * Get All Roles
+     * dynamically
+     *
+     * @return array
+     */
+    public function get_roles() {
+        $roles = wp_roles()->role_names;
+        return $roles;
     }
 
     /**
@@ -859,8 +918,9 @@ class PressBar extends Extension {
      * @return mixed
      */
     public function customize_fields($fields) {
-        $fields['queue_management'] = Rules::is('source', $this->id, true, $fields['queue_management']);
+        $wp_roles  = $this->get_roles();
 
+        $fields['queue_management'] = Rules::is('source', $this->id, true, $fields['queue_management']);
         $_fields             = &$fields["appearance"]['fields'];
         $conversion_position = &$_fields['position']['options'];
 
@@ -908,17 +968,6 @@ class PressBar extends Extension {
         $fields["timing"]['fields']['display_for']   = Rules::is('source', $this->id, true, $fields["timing"]['fields']['display_for']);
         $fields["timing"]['fields']['delay_between'] = Rules::is('source', $this->id, true, $fields["timing"]['fields']['delay_between']);
 
-        $fields["timing"]['fields']['initial_delay'] = [
-            'label'       => __("Initial Delay", 'notificationx'),
-            'name'        => "initial_delay",
-            'type'        => "number",
-            'priority'    => 45,
-            'default'     => 5,
-            'help'        => __('Initial Delay', 'notificationx'),
-            'description' => __('seconds', 'notificationx'),
-            'rules'       => Rules::is('source', $this->id),
-        ];
-
         $fields["timing"]['fields']['auto_hide'] = [
             'label'       => __("Auto Hide", 'notificationx'),
             'name'        => "auto_hide",
@@ -940,6 +989,114 @@ class PressBar extends Extension {
             'rules'       => ['is', 'auto_hide', true],
             // 'rules'       => Rules::is('source', $this->id),
         ];
+        $fields["timing"]['fields']['appear_condition'] = [
+            'label'       => __('Notification Bar will Appear', 'notificationx'),
+            'name'        => 'appear_condition',
+            'type'        => 'radio-card',
+            'priority'    => 60,
+            'classes'  => 'radio-card-v2',
+            'default'     => 'delay',
+            'options'     => [
+                'delay' => [
+                    'value' => 'after_few_seconds',
+                    'label' => __('After a few seconds', 'notificationx'),
+                ],
+                'scroll' => [
+                    'value' => 'on_scroll',
+                    'label' => __('On Scroll', 'notificationx'),
+                ],
+            ],
+            'rules'       => Rules::is('source', $this->id),
+        ];
+
+        // This field appears only when "On Scroll" is selected
+        $fields["timing"]['fields']['scroll_offset'] = [
+            'label'    => __('Scroll Offset', 'notificationx'),
+            'name'     => 'scroll_offset',
+            'type'     => 'group',
+            'priority' => 65,
+            'fields'   => [
+                'scroll_trigger_value' => [
+                    'name'    => 'scroll_trigger_value',
+                    'type'    => 'number',
+                    'min'     => 0,
+                    'default' => 100,
+                ],
+                'scroll_trigger_mode' => [
+                    'type'    => 'select',
+                    'name'    => 'scroll_trigger_mode',
+                    'options' => GlobalFields::get_instance()->normalize_fields([
+                        'px'      => __('PX', 'notificationx'),
+                        'vh'      => __('VH', 'notificationx'),
+                        'percent' => __('%', 'notificationx'),
+                    ]),
+                    'default' => 'px',
+                ],
+            ],
+            'rules' => ['is', 'appear_condition', 'on_scroll'],
+        ];
+
+        $fields["timing"]['fields']['initial_delay'] = [
+            'label'       => __("Initial Delay", 'notificationx'),
+            'name'        => "initial_delay",
+            'type'        => "number",
+            'priority'    => 70,
+            'default'     => 5,
+            'help'        => __('Initial Delay', 'notificationx'),
+            'description' => __('seconds', 'notificationx'),
+            'rules'       => Rules::logicalRule([
+                Rules::is('source', $this->id),
+                Rules::is('appear_condition', 'after_few_seconds'),
+            ]),
+        ];
+
+        $fields['targeting'] = [
+            'label'    => __('Targeting', 'notificationx'),
+            'type'     => 'section',
+            'priority' => 100,
+            'fields'   => []
+        ];
+
+        // Country Targeting
+        $fields['targeting']['fields']['country_targeting'] = [
+            'label'    => __('Country Targeting', 'notificationx'),
+            'name'     => 'country_targeting',
+            'type'     => 'better-select',
+            'priority' => 10,
+            'is_pro'   => true,
+            'multiple' => true,
+            'values'  => [  'label' => "All Country", 'value' => 'all' ],
+            'option'  => GlobalFields::get_instance()->normalize_fields(Helper::nx_get_all_country()),
+            'ajax'   => [
+                'api'  => "/notificationx/v1/get-data",
+                'data' => [
+                    'type'   => "@type",
+                    'source' => "@source",
+                    // 'field'  => "country_targeting",
+                ],
+            ],
+            'rules'    => Rules::is('source', $this->id),
+        ];
+
+        // User Role Targeting
+        $wp_roles_with_default = [];
+        if( is_array( $wp_roles ) ) {
+            $wp_roles_with_default = array_merge(
+                [ 'all_users' => __('Show for All Users', 'notificationx') ],
+                $wp_roles
+            );
+        }
+        $fields['targeting']['fields']['targeting_user_roles'] = [
+            'label'    => __('Set Target Audience', 'notificationx'),
+            'name'     => 'targeting_user_roles',
+            'type'     => 'select',
+            'priority' => 20,
+            'is_pro'   => true,
+            'default'  => ['all_users'],
+            'options'  => GlobalFields::get_instance()->normalize_fields($wp_roles_with_default),
+            'multiple' => true,
+            'rules'    => Rules::is('source', $this->id),
+        ];
 
 
         $fields["behaviour"]['fields']['display_last'] = Rules::is('source', $this->id, true, $fields["behaviour"]['fields']['display_last']);
@@ -953,6 +1110,127 @@ class PressBar extends Extension {
             Rules::is('source', $this->id, true),
         ], 'or', $fields["behaviour"]);
         //Rules::isOfType('elementor_id', 'number', true, $fields["behaviour"]);
+
+        // Add Schedule section
+        $_fields['schedule'] = array(
+            'name'     => 'schedule',
+            'label'    => __('Schedule', 'notificationx'),
+            'type'     => 'section',
+            'is_pro'   => true,
+            'priority' => 96,
+            'fields'   => array(
+                'schedule_type' => array(
+                    'name'     => 'schedule_type',
+                    'type'     => 'radio-card',
+                    'label'    => __('Schedule Type', 'notificationx'),
+                    'priority' => 10,
+                    'classes'  => 'radio-card-v2',
+                    'is_pro'   => true,
+                    'default'  => 'daily',
+                    'options'  => array(
+                        'daily' => array(
+                            'value' => 'daily',
+                            'label' => __('Daily', 'notificationx'),
+                            // 'icon'  => NOTIFICATIONX_ADMIN_URL . 'images/extensions/schedule/daily.png',
+                        ),
+                        'weekly' => array(
+                            'value' => 'weekly',
+                            'label' => __('Weekly', 'notificationx'),
+                            // 'icon'  => NOTIFICATIONX_ADMIN_URL . 'images/extensions/schedule/weekly.png',
+                        ),
+                        'custom' => array(
+                            'value' => 'custom',
+                            'label' => __('Custom', 'notificationx'),
+                            // 'icon'  => NOTIFICATIONX_ADMIN_URL . 'images/extensions/schedule/custom.png',
+                        ),
+                    ),
+                ),
+                'daily_from_time' => array(
+                    'name'     => 'daily_from_time',
+                    'type'     => 'timepicker',
+                    'label'    => __('From', 'notificationx'),
+                    'priority' => 20,
+                    'is_pro'   => true,
+                    'format'   => 'h:i A',
+                    'rules'    => Rules::is('schedule_type', 'daily'),
+                ),
+                'daily_to_time' => array(
+                    'name'     => 'daily_to_time',
+                    'type'     => 'timepicker',
+                    'label'    => __('To', 'notificationx'),
+                    'priority' => 30,
+                    'is_pro'   => true,
+                    'format'   => 'h:i A',
+                    'rules'    => Rules::is('schedule_type', 'daily'),
+                ),
+                'weekly_days' => array(
+                    'name'     => 'weekly_days',
+                    'type'     => 'select',
+                    'label'    => __('Select Days', 'notificationx'),
+                    'priority' => 40,
+                    'is_pro'   => true,
+                    'multiple' => true,
+                    'options'  => GlobalFields::get_instance()->normalize_fields([
+                        'monday'    => __('Monday', 'notificationx'),
+                        'tuesday'   => __('Tuesday', 'notificationx'),
+                        'wednesday' => __('Wednesday', 'notificationx'),
+                        'thursday'  => __('Thursday', 'notificationx'),
+                        'friday'    => __('Friday', 'notificationx'),
+                        'saturday'  => __('Saturday', 'notificationx'),
+                        'sunday'    => __('Sunday', 'notificationx'),
+                    ]),
+                    'rules'    => Rules::is('schedule_type', 'weekly'),
+                ),
+                'weekly_from_time' => array(
+                    'name'     => 'weekly_from_time',
+                    'type'     => 'timepicker',
+                    'label'    => __('From', 'notificationx'),
+                    'priority' => 50,
+                    'is_pro'   => true,
+                    'format'   => 'h:i A',
+                    'rules'    => Rules::is('schedule_type', 'weekly'),
+                ),
+                'weekly_to_time' => array(
+                    'name'     => 'weekly_to_time',
+                    'type'     => 'timepicker',
+                    'label'    => __('To', 'notificationx'),
+                    'priority' => 60,
+                    'format'   => 'h:i A',
+                    'is_pro'   => true,
+                    'rules'    => Rules::is('schedule_type', 'weekly'),
+                ),
+                'custom_schedule' => array(
+                    'name'     => 'custom_schedule',
+                    'type'     => 'daterange',
+                    'label'    => __('Custom Schedule', 'notificationx'),
+                    'priority' => 65,
+                    'is_pro'   => true,
+                    'format'   => 'h:i A',
+                    'rules'    => Rules::is('schedule_type', 'custom'),
+                ),
+                'custom_from_time' => array(
+                    'name'     => 'custom_from_time',
+                    'type'     => 'timepicker',
+                    'label'    => __('From', 'notificationx'),
+                    'priority' => 70,
+                    'is_pro'   => true,
+                    'format'   => 'h:i A',
+                    'rules'    => Rules::is('schedule_type', 'custom'),
+                ),
+                'custom_to_time' => array(
+                    'name'     => 'custom_to_time',
+                    'type'     => 'timepicker',
+                    'label'    => __('To', 'notificationx'),
+                    'priority' => 75,
+                    'is_pro'   => true,
+                    'format'   => 'h:i A',
+                    'rules'    => Rules::is('schedule_type', 'custom'),
+                ),
+            ),
+            'rules' => Rules::logicalRule([
+                Rules::is('source', $this->id),
+            ]),
+        );
 
         return $fields;
     }
@@ -1138,22 +1416,100 @@ class PressBar extends Extension {
      */
     public function content_fields($fields) {
 
-        $fields['content']['fields']['press_content'] = array(
-            'name'        => 'press_content',
-            'type'        => 'editor',
-            'label'       => __('Content', 'notificationx'),
-            'placeholder' => __('Write something here...', 'notificationx'),
-            'priority'    => 50,
-            'rules'       => Rules::logicalRule([
-                // Rules::isOfType('elementor_id', 'number', true),
+        $fields['content']['fields']['press_sliding_text'] = array(
+            'name'     => 'sliding_text',
+            'label'    => __('Text Content', 'notificationx'),
+            'type'     => 'section',
+            'classes'   => NotificationX::is_pro() ? 'pro-activated' : 'pro-deactivated',
+            'priority' => 51,
+            'fields'   => array(
+                'bar_content_type' => array(
+                    'name'     => 'bar_content_type',
+                    'type'     => 'radio-card',
+                    'label'    => __('Content', 'notificationx'),
+                    'priority' => 5,
+                    'classes'  => 'radio-card-v2',
+                    'default'  => 'static',
+                    'options'  => array(
+                        'static' => array(
+                            'label' => __('Static Text', 'notificationx'),
+                            'value' => 'static',
+                            // 'icon'  => 'dashicons-align-left',
+                        ),
+                        'sliding' => array(
+                            'label' => __('Slide Multiple Text', 'notificationx'),
+                            'value' => 'sliding',
+                            'is_pro' => true,
+                            // 'icon'  => 'dashicons-align-right',
+                        ),
+                    ),
+                ),
+                'press_content' => array(
+                    'name'        => 'press_content',
+                    'type'        => 'editor',
+                    'label'       => __('Static Text', 'notificationx'),
+                    'placeholder' => __('Write something here...', 'notificationx'),
+                    'default'     => __('You should setup NX Bar properly', 'notificationx'),
+                    'priority'    => 7,
+                    'rules'       => Rules::logicalRule([
+                        Rules::is('bar_content_type', 'static'),
+                        Rules::is('source', $this->id),
+                    ]),
+                ),
+                'sliding_content' => array(
+                    'name'        => 'sliding_content',
+                    'type'        => 'simple-repeater',
+                    'label'       => __('Sliding Text Items', 'notificationx'),
+                    'priority'    => 10,
+                    'button'      => array(
+                        'label'    => __('Add New', 'notificationx'),
+                    ),
+                    '_default'     => array(
+                        array(
+                            'title' => __('🚀 Supercharge Your Marketing Forever!', 'notificationx'),
+                        ),
+                        array(
+                            'title' => __('Get <strong>Lifetime Access to NotificationX</strong> for just <strong>$299</strong>', 'notificationx'),
+                        ),
+                    ),
+                    '_fields'      => array(
+                        array(
+                            'name'     => 'title',
+                            'type'     => 'editor',
+                            'label'    => __('Slide Text', 'notificationx'),
+                            'priority' => 10,
+                        ),
+                    ),
+                    'rules'       => Rules::logicalRule([
+                        Rules::is('bar_content_type', 'sliding'),
+                        Rules::is('source', $this->id),
+                    ]),
+                ),
+                'sliding_interval' => array(
+                    'name'        => 'sliding_interval',
+                    'type'        => 'number',
+                    'label'       => __('Sliding Interval', 'notificationx'),
+                    'priority'    => 20,
+                    'default'     => 3000,
+                    'description' => 'ms',
+                    'help'        => __('Time interval between slides in milliseconds', 'notificationx'),
+                    'rules'       => Rules::logicalRule([
+                        Rules::is('bar_content_type', 'sliding'),
+                        Rules::is('source', $this->id),
+                    ]),
+                ),
+            ),
+            'rules' => Rules::logicalRule([
                 Rules::is('source', $this->id),
             ]),
         );
+
         $fields['content']['fields']['button_text'] = array(
             'name'     => 'button_text',
             'type'     => 'text',
             'label'    => __('Button Text', 'notificationx'),
             'priority' => 60,
+            'default'  => __('Get Offer', 'notificationx'),
             'rules' => Rules::logicalRule([
                 // Rules::isOfType('elementor_id', 'number', true),
                 Rules::is('source', $this->id),
@@ -1163,9 +1519,132 @@ class PressBar extends Extension {
             'name'     => 'button_url',
             'type'     => 'text',
             'label'    => __('Button URL', 'notificationx'),
+            'default'  => '#',
             'priority' => 70,
             'rules' => Rules::logicalRule([
                 // Rules::isOfType('elementor_id', 'number', true),
+                Rules::is('source', $this->id),
+            ]),
+        );
+        $fields['content']['fields']['bar_transition_speed'] = [
+            'label'       => __('Transition Speed', 'notificationx'),
+            'name'        => "bar_transition_speed",
+            'type'        => "number",
+            'default'     => '500',
+            'description' => 'ms',
+            'priority'    => 100,
+            'help'        => __('Transition speed in milliseconds', 'notificationx'),
+            'rules'       => Rules::logicalRule([
+                Rules::is('bar_content_type', 'sliding'),
+                Rules::is('source', $this->id),
+            ]),
+        ];
+        $fields['content']['fields']['bar_transition_style'] = [
+            'label'    => __('Transition Style', 'notificationx'),
+            'name'     => "bar_transition_style",
+            'type'     => "select",
+            'priority' => 110,
+            'default'  => 'slide_right',
+            'options'  => GlobalFields::get_instance()->normalize_fields([
+                'slide_right' => __('Slide in Right', 'notificationx'),
+                'slide_left'  => __('Slide in Left', 'notificationx'),
+            ]),
+            'rules'       => Rules::logicalRule([
+                Rules::is('bar_content_type', 'sliding'),
+                Rules::is('source', $this->id),
+            ]),
+        ];
+
+        $fields['bar_coupon'] = array(
+            'name'     => 'bar_coupon',
+            'label'    => __('Coupon', 'notificationx'),
+            'type'     => 'section',
+            'priority' => 94,
+            'dependency_class'  => [
+                'name'     => 'enable_coupon',
+                'is'       => true,
+                'classes'  => 'coupon_active',
+                'selector' => '#bar_coupon',
+            ],
+            'fields'   => array(
+                'enable_coupon' => array(
+                    'name'    => 'enable_coupon',
+                    'label'   => __('Enable Coupon', 'notificationx'),
+                    'type'    => 'toggle',
+                    'default' => false,
+                ),
+                'coupon_text' => array(
+                    'name'     => 'coupon_text',
+                    'label'    => __('Button Text', 'notificationx'),
+                    'type'     => 'text',
+                    'default'  => __('SAVE20', 'notificationx'),
+                    'priority' => 10,
+                    'rules' => Rules::logicalRule([
+                        Rules::is('enable_coupon', true),
+                    ]),
+                ),
+                'coupon_code' => array(
+                    'name'     => 'coupon_code',
+                    'label'    => __('Coupon Code', 'notificationx'),
+                    'type'     => 'text',
+                    'default'  => __('SAVE20', 'notificationx'),
+                    'priority' => 12,
+                    'rules' => Rules::logicalRule([
+                        Rules::is('enable_coupon', true),
+                    ]),
+                ),
+                'coupon_copied_text' => array(
+                    'name'     => 'coupon_copied_text',
+                    'label'    => __('Coupon Copied Text', 'notificationx'),
+                    'type'     => 'text',
+                    'default'  => __('Copied!', 'notificationx'),
+                    'priority' => 20,
+                    'rules' => Rules::logicalRule([
+                        Rules::is('enable_coupon', true),
+                    ]),
+                ),
+                'coupon_tooltip' => array(
+                    'name'     => 'coupon_tooltip',
+                    'label'    => __('Coupon Tooltip', 'notificationx'),
+                    'type'     => 'textarea',
+                    'default'  => __('Use this coupon code to get 20% off', 'notificationx'),
+                    'priority' => 30,
+                    'rules'    => Rules::logicalRule([
+                        Rules::is('enable_coupon', true),
+                    ]),
+                ),
+                'coupon_bg_color' => array(
+                    'name'     => 'coupon_bg_color',
+                    'label'    => __('Coupon Background Color', 'notificationx'),
+                    'type'     => 'colorpicker',
+                    'default'  => '#ffffff',
+                    'priority' => 40,
+                    'rules'    => Rules::logicalRule([
+                        Rules::is('enable_coupon', true),
+                    ]),
+                ),
+                'coupon_text_color' => array(
+                    'name'     => 'coupon_text_color',
+                    'label'    => __('Coupon Text Color', 'notificationx'),
+                    'type'     => 'colorpicker',
+                    'default'  => '#000000',
+                    'priority' => 50,
+                    'rules'    => Rules::logicalRule([
+                        Rules::is('enable_coupon', true),
+                    ]),
+                ),
+                'coupon_border_color' => array(
+                    'name'     => 'coupon_border_color',
+                    'label'    => __('Coupon Border Color', 'notificationx'),
+                    'type'     => 'colorpicker',
+                    'default'  => '#dddddd',
+                    'priority' => 60,
+                    'rules'    => Rules::logicalRule([
+                        Rules::is('enable_coupon', true),
+                    ]),
+                ),
+            ),
+            'rules' => Rules::logicalRule([
                 Rules::is('source', $this->id),
             ]),
         );
@@ -1180,6 +1659,7 @@ class PressBar extends Extension {
                     'name'  => 'enable_countdown',
                     'label' => __('Enable Countdown', 'notificationx'),
                     'type'  => 'checkbox',
+                    'default' => true,
                 ),
                 'evergreen_timer'        => array(
                     'name'        => 'evergreen_timer',
@@ -1194,9 +1674,10 @@ class PressBar extends Extension {
                     'name'  => 'countdown_text',
                     'label' => __('Countdown Text', 'notificationx'),
                     'type'  => 'text',
+                    'default' => __('Ending in', 'notificationx'),
                     'rules'  => Rules::logicalRule([
-                        Rules::is('elementor_id', false),
-                        Rules::is('gutenberg_id', false),
+                        // Rules::is('elementor_id', false),
+                        // Rules::is('gutenberg_id', false),
                         Rules::is('enable_countdown', true),
                     ]),
                 ),
@@ -1224,7 +1705,7 @@ class PressBar extends Extension {
                     'label' => __('End Date', 'notificationx'),
                     'type'  => 'date',
                     // @todo Something
-                    // 'default' => date('Y-m-d H:i:s', time() + 7 * 24 * 60 * 60),
+                    'default' => date('Y-m-d H:i:s', time() + 7 * 24 * 60 * 60),
                     'rules' => ["and", ['is', 'evergreen_timer', false], ['is', 'enable_countdown', true]],
                 ),
                 'time_randomize'         => array(
@@ -1260,7 +1741,7 @@ class PressBar extends Extension {
                     'label'       => __('Time Rotation', 'notificationx'),
                     'type'        => 'number',
                     'description' => 'hours',
-                    // 'default'     => 8,
+                    'default'     => 315,
                     'rules'       => ["and", ['is', 'evergreen_timer', true], ['is', 'enable_countdown', true], ['is', 'time_randomize', false]]
                 ),
                 'time_reset'             => array(
