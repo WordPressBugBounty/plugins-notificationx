@@ -3,9 +3,9 @@ Contributors: Asif2BD, priyomukul, wpdevteam, re_enter_rupok, alimuzzamanalim, s
 Donate link: https://notificationx.com
 Tags: sales notification, fomo, social proof, woocommerce sales, notification bar
 Requires at least: 5.0
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 3.1.4
+Stable tag: 3.2.1
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -208,6 +208,56 @@ Yes. Your data is legally safe and we guarantee to not make use of your data und
 10. Notification Bar with Countdown
 
 == Changelog ==
+
+= 3.2.1 - 06/01/2026 =
+Improved: Security enhancements (reported by WordFence).
+Improved: Export feature for Announcement-type Notification.
+Fixed: CTR was not showing properly.
+Few minor bug fixes and improvements.
+
+= 3.2.0 - 24/12/2025 =
+Added: New Announcement notification type.
+Fixed: Custom Notification entries were erased during CSV import
+Fixed: Compatibility issues with PHP 8.5
+Few minor bug fixes and improvements
+
+
+= 3.1.11 - 03/12/2025 =
+Added: Compatibility with WordPress 6.9.
+Fixed: Coupon code copy wasn’t working properly on the Notification Bar.
+Improved: Advanced design for Custom Type Notification Bar.
+A few minor bug fixes and improvements.
+
+= 3.1.10 - 27/11/2025 =
+Improved: Codebase for enhanced performance.
+Few minor bug fixes and improvements.
+
+= 3.1.9 - 19/11/2025 =
+Fixed: Responsive issues of popup notifications.
+Improved: UI/UX of plugin’s dashboard.
+Few minor bug fixes and improvements.
+
+= 3.1.8 - 03/11/2025 =
+ Fixed: Cross-domain notifications persisting after being disabled on the main site.
+ Fixed: NX Bar padding issues on responsive devices.
+ Fixed: NX Bar Elementor templates not loading properly.
+ Few minor bug fixes and performance improvements.
+
+= 3.1.7 - 29/10/2025 =
+Fixed: Mobile responsiveness issue for Custom Notification type.
+Fixed: Excluded notification bar from site indexing.
+Few minor bug fixes and performance improvements.
+
+= 3.1.6 - 22/10/2025 =
+Added: FluentCart Integration
+Fixed: Uncaught type error for flashing tab notification
+Fixed: Notification bar position issue when set to top
+Few minor bug fixes and improvements
+
+= 3.1.5 - 08/10/2025 =
+Added: Feature explanation GIFs to improve user experience.
+Added: Option to make notifications reappear for all types.
+Few minor bug fixes and improvements.
 
 = 3.1.4 - 04/09/2025 =
 Improved: Responsiveness of the notification bar.

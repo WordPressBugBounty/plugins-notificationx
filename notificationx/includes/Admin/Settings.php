@@ -135,10 +135,11 @@ class Settings extends UsabilityDynamicsSettings {
                     'priority' => 10,
                     'fields'   => [
                         'section-modules' => [
-                            'label'  => __( 'Modules', 'notificationx' ),
-                            'name'   => 'section-modules',
-                            'type'   => 'section',
-                            'fields' => [
+                            'label'   => __( 'Modules', 'notificationx' ),
+                            'name'    => 'section-modules',
+                            'type'    => 'section',
+                            'classes' => NotificationX::get_instance()->is_pro() ? 'section-modules pro-activated' : 'section-modules',
+                            'fields'  => [
                                 'modules' => [
                                     // 'label'   => "Modules",
                                     'name'     => 'modules',
@@ -362,6 +363,7 @@ class Settings extends UsabilityDynamicsSettings {
                                         )
                                     ),
                                     'rules'    => Rules::is( 'disable_reporting', false ),
+                                    'info'     => InfoTooltipManager::get_instance()->render('reporting_frequency'),
                                 ),
                                 'reporting_monthly_help_text' => array(
                                     'name'     => 'reporting_monthly_help_text',
@@ -437,6 +439,21 @@ class Settings extends UsabilityDynamicsSettings {
                             ),
                         ),
                     ],
+                    ]
+                ),
+                'entries'  => apply_filters('nx_settings_tab_entries', [
+                    'label'    => __( 'Entries', 'notificationx' ),
+                    'id'       => 'entries',
+                    'classes'  => 'tab-advanced-settings',
+                    'priority' => 35,
+                    'fields'   => [
+                        'feedback_entries'       => array(
+                                'name'     => 'feedback_entries',
+                                'priority' => 10,
+                                'type'     => 'feedback-entries',
+                                'label'    => __( 'Analytics', 'notificationx' ),
+                            ),
+                        ],
                     ]
                 ),
                 'cache_settings_tab'         => apply_filters('nx_settings_tab_cache', [
