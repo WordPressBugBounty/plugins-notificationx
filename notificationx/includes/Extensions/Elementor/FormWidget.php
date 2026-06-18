@@ -108,7 +108,20 @@ class FormWidget extends Widget_Base {
         return $options;
     }
 
+    /**
+     * Whether NotificationX Pro is active. Pro unlocks the Email field and the
+     * per-field Column Width controls; the free version forces a single-column
+     * (100%) layout and does not collect email.
+     *
+     * @return bool
+     */
+    private function is_pro() {
+        return class_exists( '\\NotificationXPro\\NotificationX' );
+    }
+
     protected function register_controls() {
+
+        $is_pro = $this->is_pro();
 
         // ── Form Settings ─────────────────────────────────────────────────
         $this->start_controls_section(
@@ -142,64 +155,92 @@ class FormWidget extends Widget_Base {
             'nx_name_heading',
             [ 'label' => esc_html__( 'Name Field', 'notificationx' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before' ]
         );
-        $this->add_control(
-            'nx_show_name',
-            [ 'label' => esc_html__( 'Show Name', 'notificationx' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes' ]
-        );
-        $this->add_responsive_control(
-            'nx_name_width',
-            [
-                'label'     => esc_html__( 'Column Width', 'notificationx' ),
-                'type'      => Controls_Manager::SELECT,
-                'options'   => nx_form_widths(),
-                'default'   => '100',
-                'condition' => [ 'nx_show_name' => 'yes' ],
-            ]
-        );
-        $this->add_control(
-            'nx_name_label',
-            [ 'label' => esc_html__( 'Label', 'notificationx' ), 'type' => Controls_Manager::TEXT, 'default' => esc_html__( 'Name', 'notificationx' ), 'condition' => [ 'nx_show_name' => 'yes' ] ]
-        );
-        $this->add_control(
-            'nx_name_placeholder',
-            [ 'label' => esc_html__( 'Placeholder', 'notificationx' ), 'type' => Controls_Manager::TEXT, 'default' => esc_html__( 'Your name', 'notificationx' ), 'condition' => [ 'nx_show_name' => 'yes' ] ]
-        );
-        $this->add_control(
-            'nx_name_required',
-            [ 'label' => esc_html__( 'Required', 'notificationx' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => '', 'condition' => [ 'nx_show_name' => 'yes' ] ]
-        );
+
+        if ( $is_pro ) {
+            $this->add_control(
+                'nx_show_name',
+                [ 'label' => esc_html__( 'Show Name', 'notificationx' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes' ]
+            );
+            $this->add_responsive_control(
+                'nx_name_width',
+                [
+                    'label'     => esc_html__( 'Column Width', 'notificationx' ),
+                    'type'      => Controls_Manager::SELECT,
+                    'options'   => nx_form_widths(),
+                    'default'   => '100',
+                    'condition' => [ 'nx_show_name' => 'yes' ],
+                ]
+            );
+            $this->add_control(
+                'nx_name_label',
+                [ 'label' => esc_html__( 'Label', 'notificationx' ), 'type' => Controls_Manager::TEXT, 'default' => esc_html__( 'Name', 'notificationx' ), 'condition' => [ 'nx_show_name' => 'yes' ] ]
+            );
+            $this->add_control(
+                'nx_name_placeholder',
+                [ 'label' => esc_html__( 'Placeholder', 'notificationx' ), 'type' => Controls_Manager::TEXT, 'default' => esc_html__( 'Your name', 'notificationx' ), 'condition' => [ 'nx_show_name' => 'yes' ] ]
+            );
+            $this->add_control(
+                'nx_name_required',
+                [ 'label' => esc_html__( 'Required', 'notificationx' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => '', 'condition' => [ 'nx_show_name' => 'yes' ] ]
+            );
+        } else {
+            // Free version: the Name field is a Pro-only feature. Show a notice
+            // instead of the controls so the field can't be enabled.
+            $this->add_control(
+                'nx_name_pro_notice',
+                [
+                    'type'            => Controls_Manager::RAW_HTML,
+                    'raw'             => esc_html__( 'The Name field is available in NotificationX Pro.', 'notificationx' ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+                ]
+            );
+        }
 
         // Email field
         $this->add_control(
             'nx_email_heading',
             [ 'label' => esc_html__( 'Email Field', 'notificationx' ), 'type' => Controls_Manager::HEADING, 'separator' => 'before' ]
         );
-        $this->add_control(
-            'nx_show_email',
-            [ 'label' => esc_html__( 'Show Email', 'notificationx' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes' ]
-        );
-        $this->add_responsive_control(
-            'nx_email_width',
-            [
-                'label'     => esc_html__( 'Column Width', 'notificationx' ),
-                'type'      => Controls_Manager::SELECT,
-                'options'   => nx_form_widths(),
-                'default'   => '100',
-                'condition' => [ 'nx_show_email' => 'yes' ],
-            ]
-        );
-        $this->add_control(
-            'nx_email_label',
-            [ 'label' => esc_html__( 'Label', 'notificationx' ), 'type' => Controls_Manager::TEXT, 'default' => esc_html__( 'Email', 'notificationx' ), 'condition' => [ 'nx_show_email' => 'yes' ] ]
-        );
-        $this->add_control(
-            'nx_email_placeholder',
-            [ 'label' => esc_html__( 'Placeholder', 'notificationx' ), 'type' => Controls_Manager::TEXT, 'default' => esc_html__( 'you@example.com', 'notificationx' ), 'condition' => [ 'nx_show_email' => 'yes' ] ]
-        );
-        $this->add_control(
-            'nx_email_required',
-            [ 'label' => esc_html__( 'Required', 'notificationx' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes', 'condition' => [ 'nx_show_email' => 'yes' ] ]
-        );
+
+        if ( $is_pro ) {
+            $this->add_control(
+                'nx_show_email',
+                [ 'label' => esc_html__( 'Show Email', 'notificationx' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes' ]
+            );
+            $this->add_responsive_control(
+                'nx_email_width',
+                [
+                    'label'     => esc_html__( 'Column Width', 'notificationx' ),
+                    'type'      => Controls_Manager::SELECT,
+                    'options'   => nx_form_widths(),
+                    'default'   => '100',
+                    'condition' => [ 'nx_show_email' => 'yes' ],
+                ]
+            );
+            $this->add_control(
+                'nx_email_label',
+                [ 'label' => esc_html__( 'Label', 'notificationx' ), 'type' => Controls_Manager::TEXT, 'default' => esc_html__( 'Email', 'notificationx' ), 'condition' => [ 'nx_show_email' => 'yes' ] ]
+            );
+            $this->add_control(
+                'nx_email_placeholder',
+                [ 'label' => esc_html__( 'Placeholder', 'notificationx' ), 'type' => Controls_Manager::TEXT, 'default' => esc_html__( 'you@example.com', 'notificationx' ), 'condition' => [ 'nx_show_email' => 'yes' ] ]
+            );
+            $this->add_control(
+                'nx_email_required',
+                [ 'label' => esc_html__( 'Required', 'notificationx' ), 'type' => Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes', 'condition' => [ 'nx_show_email' => 'yes' ] ]
+            );
+        } else {
+            // Free version: the Email field is a Pro-only feature. Show a notice
+            // instead of the controls so the field can't be enabled.
+            $this->add_control(
+                'nx_email_pro_notice',
+                [
+                    'type'            => Controls_Manager::RAW_HTML,
+                    'raw'             => esc_html__( 'The Email field is available in NotificationX Pro.', 'notificationx' ),
+                    'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+                ]
+            );
+        }
 
         // Message field
         $this->add_control(
@@ -230,7 +271,7 @@ class FormWidget extends Widget_Base {
         );
         $this->add_control(
             'nx_message_rows',
-            [ 'label' => esc_html__( 'Rows', 'notificationx' ), 'type' => Controls_Manager::NUMBER, 'default' => 4, 'min' => 1, 'max' => 20, 'condition' => [ 'nx_show_message' => 'yes' ] ]
+            [ 'label' => esc_html__( 'Rows', 'notificationx' ), 'type' => Controls_Manager::NUMBER, 'default' => 3, 'min' => 1, 'max' => 20, 'condition' => [ 'nx_show_message' => 'yes' ] ]
         );
         $this->add_control(
             'nx_message_required',
@@ -532,6 +573,14 @@ class FormWidget extends Widget_Base {
         $show_name    = ! empty( $s['nx_show_name'] );
         $show_email   = ! empty( $s['nx_show_email'] );
         $show_message = ! empty( $s['nx_show_message'] );
+
+        // Free version: Name and Email are Pro-only fields, so only the Message
+        // field is collected. Enforce this at render time too, so settings saved
+        // while Pro was active don't leak through after Pro is deactivated.
+        if ( ! $this->is_pro() ) {
+            $show_name  = false;
+            $show_email = false;
+        }
 
         // Don't render the form at all if no campaign is selected — show a
         // friendly editor-only notice.

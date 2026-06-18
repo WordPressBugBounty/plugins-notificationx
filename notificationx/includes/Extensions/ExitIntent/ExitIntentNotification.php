@@ -1716,6 +1716,7 @@ JS;
                     'type'     => 'text',
                     'default'  => __( 'Name *', 'notificationx' ),
                     'priority' => 75,
+                    'is_pro'   => true,
                     'rules'    => Rules::is( 'exit_intent_show_name', true ),
                 ],
                 [
@@ -1732,6 +1733,7 @@ JS;
                     'type'     => 'text',
                     'default'  => __( 'Enter Your Email *', 'notificationx' ),
                     'priority' => 85,
+                    'is_pro'   => true,
                     'rules'    => Rules::is( 'exit_intent_show_email', true ),
                 ],
                 [

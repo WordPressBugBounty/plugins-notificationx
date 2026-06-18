@@ -8,15 +8,68 @@
 ( function () {
     'use strict';
 
+    // ── Per-session submission guard ──────────────────────────────────────
+    // A visitor may submit a given campaign's form only once per browser
+    // session; the flag is stored in sessionStorage keyed by campaign id.
+    function sessionStore() {
+        try { return window.sessionStorage; } catch ( e ) { return null; }
+    }
+    function submittedKey( nxId ) {
+        return 'notificationx_form_submitted_' + nxId;
+    }
+    function hasSubmitted( nxId ) {
+        var store = sessionStore();
+        try { return !! ( store && store.getItem( submittedKey( nxId ) ) ); }
+        catch ( e ) { return false; }
+    }
+    function markSubmitted( nxId ) {
+        var store = sessionStore();
+        try { if ( store ) store.setItem( submittedKey( nxId ), '1' ); }
+        catch ( e ) {}
+    }
+
+    // Disable the form's submit button and show an "already submitted" notice.
+    function lockForm( form, btn, msgEl ) {
+        if ( btn ) btn.disabled = true;
+        if ( msgEl && ! msgEl.textContent ) {
+            msgEl.classList.add( 'is-success' );
+            msgEl.textContent = form.getAttribute( 'data-already' )
+                || 'You have already submitted this form.';
+        }
+    }
+
+    // If the form is rendered inside an Exit Intent popup, ask the popup to
+    // close itself (handled in ExitIntentPopup.tsx) shortly after a success.
+    function closeExitIntent( form, nxId ) {
+        if ( ! form.closest || ! form.closest( '.nx-exit-intent-overlay' ) ) return;
+        setTimeout( function () {
+            document.dispatchEvent( new CustomEvent( 'nx:exit-intent-close', {
+                detail: { nxId: nxId },
+            } ) );
+        }, 1600 );
+    }
+
     function init( form ) {
         if ( ! form || form.__nxBound ) return;
         form.__nxBound = true;
 
         var msgEl = form.querySelector( '.nx-form-message' );
         var btn   = form.querySelector( '.nx-form-submit' );
+        var nxId  = form.getAttribute( 'data-nx-id' );
+
+        // Already submitted this session? Lock the form up-front.
+        if ( nxId && hasSubmitted( nxId ) ) {
+            lockForm( form, btn, msgEl );
+        }
 
         form.addEventListener( 'submit', function ( ev ) {
             ev.preventDefault();
+
+            // Guard against repeat submissions within the same session.
+            if ( nxId && hasSubmitted( nxId ) ) {
+                lockForm( form, btn, msgEl );
+                return;
+            }
 
             if ( msgEl ) {
                 msgEl.textContent = '';
@@ -29,8 +82,7 @@
                 return;
             }
 
-            var nxId = form.getAttribute( 'data-nx-id' );
-            var url  = form.getAttribute( 'data-rest-url' );
+            var url = form.getAttribute( 'data-rest-url' );
             if ( ! nxId || ! url ) return;
 
             var payload = {
@@ -69,12 +121,20 @@
                 } );
             } )
             .then( function ( result ) {
-                if ( ! msgEl ) return;
                 if ( result.ok ) {
-                    msgEl.classList.add( 'is-success' );
-                    msgEl.textContent = form.getAttribute( 'data-success' ) || 'Submitted.';
+                    // Remember the submission for the rest of the session and
+                    // keep the form locked so it can't be sent again.
+                    markSubmitted( nxId );
+                    if ( btn ) btn.disabled = true;
+                    if ( msgEl ) {
+                        msgEl.classList.add( 'is-success' );
+                        msgEl.textContent = form.getAttribute( 'data-success' ) || 'Submitted.';
+                    }
                     form.reset();
-                } else {
+                    // When the form lives inside an Exit Intent popup, dismiss it
+                    // after the success message has had a moment to register.
+                    closeExitIntent( form, nxId );
+                } else if ( msgEl ) {
                     msgEl.classList.add( 'is-error' );
                     msgEl.textContent = ( result.body && result.body.message )
                         || form.getAttribute( 'data-error' )
@@ -87,7 +147,9 @@
                 msgEl.textContent = form.getAttribute( 'data-error' ) || 'Something went wrong.';
             } )
             .finally( function () {
-                if ( btn ) btn.disabled = false;
+                // Leave the button disabled once a submission has gone through;
+                // only re-enable it after a failed attempt.
+                if ( btn && ! ( nxId && hasSubmitted( nxId ) ) ) btn.disabled = false;
             } );
         } );
     }

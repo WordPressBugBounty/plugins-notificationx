@@ -15,6 +15,7 @@ use NotificationX\Core\Analytics;
 use NotificationX\Core\Dashboard;
 use NotificationX\Core\Database;
 use NotificationX\Core\PostType;
+use NotificationX\Core\SetupWizard;
 use NotificationX\Core\Upgrader;
 use NotificationX\GetInstance;
 use NotificationX\Extensions\ExtensionFactory;
@@ -86,6 +87,7 @@ class Admin {
         add_action('admin_init', [$this, 'admin_init']);
         add_action('admin_menu', [$this, 'menu'], 10);
         Dashboard::get_instance();
+        SetupWizard::get_instance();
         PostType::get_instance();
         Settings::get_instance()->init();
         Entries::get_instance();
@@ -470,6 +472,18 @@ class Admin {
 
         // Don't show for non-admin users
         if (!current_user_can('manage_options')) {
+            return false;
+        }
+
+        // Delay the popup until 1 day after installation. Quick Setup already
+        // handles onboarding, so this stays out of the way on the first day.
+        $install_time = get_option('nx_initial_popup_install_time', false);
+        if (!$install_time) {
+            $install_time = time();
+            update_option('nx_initial_popup_install_time', $install_time);
+        }
+
+        if ((time() - (int) $install_time) < DAY_IN_SECONDS) {
             return false;
         }
 

@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-3.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: NotificationX 3.2.8\n"
+"Project-Id-Version: NotificationX 3.2.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/notificationx\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-09T10:00:46+00:00\n"
+"POT-Creation-Date: 2026-06-18T11:23:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: notificationx\n"
@@ -52,48 +52,48 @@ msgstr ""
 msgid "There is no data in this notification."
 msgstr ""
 
-#: includes/Admin/Admin.php:122
+#: includes/Admin/Admin.php:124
 #: assets/admin/js/admin.js:11
 msgid "All NotificationX"
 msgstr ""
 
-#: includes/Admin/Admin.php:224
+#: includes/Admin/Admin.php:226
 msgid "We hope you're enjoying NotificationX! Could you please do us a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?"
 msgstr ""
 
-#: includes/Admin/Admin.php:229
+#: includes/Admin/Admin.php:231
 msgid "Ok, you deserve it!"
 msgstr ""
 
-#: includes/Admin/Admin.php:233
+#: includes/Admin/Admin.php:235
 msgid "I already did"
 msgstr ""
 
-#: includes/Admin/Admin.php:240
+#: includes/Admin/Admin.php:242
 msgid "Maybe Later"
 msgstr ""
 
-#: includes/Admin/Admin.php:248
+#: includes/Admin/Admin.php:250
 msgid "I need help"
 msgstr ""
 
-#: includes/Admin/Admin.php:252
+#: includes/Admin/Admin.php:254
 msgid "Never show again"
 msgstr ""
 
-#: includes/Admin/Admin.php:285
+#: includes/Admin/Admin.php:287
 msgid "<p><strong>Black Friday Exclusive:</strong> SAVE up to 40% & access to <strong>NotificationX Pro</strong> features.</p>"
 msgstr ""
 
-#: includes/Admin/Admin.php:285
+#: includes/Admin/Admin.php:287
 msgid "Grab The Offer"
 msgstr ""
 
-#: includes/Admin/Admin.php:419
+#: includes/Admin/Admin.php:421
 msgid "Want to help make <strong>NotificationX</strong> even more awesome? You can get a <strong>10% discount coupon</strong> for Premium extensions if you allow us to track the usage."
 msgstr ""
 
-#: includes/Admin/Admin.php:420
+#: includes/Admin/Admin.php:422
 msgid ""
 "We collect non-sensitive diagnostic data and plugin usage information.\n"
 "\t\t\tYour site URL, WordPress & PHP version, plugins & themes and email address to send you the\n"
@@ -819,7 +819,7 @@ msgstr ""
 
 #: includes/Core/Helper.php:789
 #: includes/Core/Rest/Popup.php:461
-#: includes/Extensions/Elementor/FormWidget.php:161
+#: includes/Extensions/Elementor/FormWidget.php:176
 #: assets/admin/js/admin.js:13
 msgid "Name"
 msgstr ""
@@ -1797,6 +1797,7 @@ msgstr ""
 #: includes/Extensions/PressBar/PressBar.php:67
 #: includes/Types/NotificationBar.php:234
 #: assets/admin/js/admin.js:11
+#: assets/admin/js/admin.js:13
 #: assets/public/js/crossSite.js:1
 #: assets/public/js/frontend.js:1
 msgid "Notification Bar"
@@ -1814,6 +1815,7 @@ msgstr ""
 #: includes/Extensions/WooCommerce/WooCommerceSales.php:199
 #: includes/Types/Conversions.php:62
 #: assets/admin/js/admin.js:11
+#: assets/admin/js/admin.js:13
 #: assets/public/js/crossSite.js:1
 #: assets/public/js/frontend.js:1
 msgid "Sales Notification"
@@ -1855,6 +1857,7 @@ msgstr ""
 #: includes/Extensions/WooCommerce/WooCommerceSalesInline.php:67
 #: includes/Types/Inline.php:45
 #: assets/admin/js/admin.js:11
+#: assets/admin/js/admin.js:13
 #: assets/public/js/crossSite.js:1
 #: assets/public/js/frontend.js:1
 msgid "Growth Alert"
@@ -1993,7 +1996,7 @@ msgid "Email Address"
 msgstr ""
 
 #: includes/Core/Rest/Popup.php:465
-#: includes/Extensions/Elementor/FormWidget.php:225
+#: includes/Extensions/Elementor/FormWidget.php:266
 #: includes/Types/GDPR.php:315
 #: includes/Types/GDPR.php:318
 #: includes/Types/GDPR.php:412
@@ -2013,6 +2016,11 @@ msgstr ""
 #: includes/Core/Rest/Posts.php:242
 #: includes/Core/Rest/Posts.php:262
 msgid "Cannot create existing post."
+msgstr ""
+
+#: includes/Core/SetupWizard.php:61
+#: includes/Core/SetupWizard.php:62
+msgid "Setup Wizard"
 msgstr ""
 
 #: includes/CoreInstaller.php:67
@@ -2578,8 +2586,8 @@ msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:206
 #: includes/Extensions/Elementor/CountdownWidget.php:724
-#: includes/Extensions/Elementor/FormWidget.php:278
-#: includes/Extensions/Elementor/FormWidget.php:487
+#: includes/Extensions/Elementor/FormWidget.php:319
+#: includes/Extensions/Elementor/FormWidget.php:528
 #: blocks/notificationx/components/inspector.js:226
 #: blocks/notificationx/components/inspector.js:260
 #: blocks/notificationx/index.js:1
@@ -2588,8 +2596,8 @@ msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:209
 #: includes/Extensions/Elementor/CountdownWidget.php:727
-#: includes/Extensions/Elementor/FormWidget.php:281
-#: includes/Extensions/Elementor/FormWidget.php:490
+#: includes/Extensions/Elementor/FormWidget.php:322
+#: includes/Extensions/Elementor/FormWidget.php:531
 #: includes/Extensions/GlobalFields.php:597
 #: includes/Extensions/PressBar/PressBar.php:485
 #: includes/Extensions/PressBar/PressBar.php:624
@@ -2599,11 +2607,11 @@ msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:210
 #: includes/Extensions/Elementor/CountdownWidget.php:728
-#: includes/Extensions/Elementor/FormWidget.php:282
-#: includes/Extensions/Elementor/FormWidget.php:491
+#: includes/Extensions/Elementor/FormWidget.php:323
+#: includes/Extensions/Elementor/FormWidget.php:532
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:389
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2171
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2202
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2173
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2204
 #: includes/Extensions/GlobalFields.php:412
 #: includes/Extensions/PopupNotification/PopupNotification.php:947
 msgid "Center"
@@ -2611,8 +2619,8 @@ msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:211
 #: includes/Extensions/Elementor/CountdownWidget.php:729
-#: includes/Extensions/Elementor/FormWidget.php:283
-#: includes/Extensions/Elementor/FormWidget.php:492
+#: includes/Extensions/Elementor/FormWidget.php:324
+#: includes/Extensions/Elementor/FormWidget.php:533
 #: includes/Extensions/GlobalFields.php:598
 #: includes/Extensions/PressBar/PressBar.php:492
 #: includes/Extensions/PressBar/PressBar.php:625
@@ -2734,7 +2742,7 @@ msgid "None"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:377
-#: includes/Extensions/Elementor/FormWidget.php:211
+#: includes/Extensions/Elementor/FormWidget.php:252
 msgid "Show Message"
 msgstr ""
 
@@ -2784,8 +2792,8 @@ msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:480
 #: includes/Extensions/Elementor/CountdownWidget.php:571
-#: includes/Extensions/Elementor/FormWidget.php:388
-#: includes/Extensions/Elementor/FormWidget.php:476
+#: includes/Extensions/Elementor/FormWidget.php:429
+#: includes/Extensions/Elementor/FormWidget.php:517
 #: includes/Extensions/PopupNotification/PopupNotification.php:375
 msgid "Padding"
 msgstr ""
@@ -2796,15 +2804,15 @@ msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:501
 #: includes/Extensions/Elementor/CountdownWidget.php:591
-#: includes/Extensions/Elementor/FormWidget.php:378
-#: includes/Extensions/Elementor/FormWidget.php:466
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1835
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1878
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1918
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1965
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1999
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2058
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2116
+#: includes/Extensions/Elementor/FormWidget.php:419
+#: includes/Extensions/Elementor/FormWidget.php:507
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1837
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1880
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1920
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1967
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2001
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2060
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2118
 #: includes/Extensions/PopupNotification/PopupNotification.php:194
 #: includes/Extensions/PopupNotification/PopupNotification.php:368
 #: includes/Extensions/PressBar/PressBar.php:482
@@ -2825,10 +2833,10 @@ msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:560
 #: includes/Extensions/Elementor/CountdownWidget.php:667
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1836
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1919
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1966
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2117
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1838
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1921
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1968
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2119
 #: includes/Extensions/GDPR/GDPR_Notification.php:75
 #: includes/Extensions/GDPR/GDPR_Notification.php:157
 #: includes/Extensions/GDPR/GDPR_Notification.php:201
@@ -2848,7 +2856,7 @@ msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:619
 #: includes/Extensions/Elementor/CountdownWidget.php:689
-#: includes/Extensions/Elementor/FormWidget.php:315
+#: includes/Extensions/Elementor/FormWidget.php:356
 msgid "Label Color"
 msgstr ""
 
@@ -2874,20 +2882,20 @@ msgid "Expire Message"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:740
-#: includes/Extensions/Elementor/FormWidget.php:298
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1844
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1925
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1977
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2006
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2069
+#: includes/Extensions/Elementor/FormWidget.php:339
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1846
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1927
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1979
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2008
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2071
 #: includes/Extensions/GDPR/GDPR_Notification.php:87
 #: includes/Extensions/PopupNotification/PopupNotification.php:232
 msgid "Title Color"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:760
-#: includes/Extensions/Elementor/FormWidget.php:437
-#: includes/Extensions/Elementor/FormWidget.php:448
+#: includes/Extensions/Elementor/FormWidget.php:478
+#: includes/Extensions/Elementor/FormWidget.php:489
 #: includes/Extensions/GDPR/GDPR_Notification.php:169
 #: includes/Extensions/GDPR/GDPR_Notification.php:213
 #: includes/Extensions/GDPR/GDPR_Notification.php:251
@@ -2920,107 +2928,115 @@ msgstr ""
 msgid "Popup"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:116
+#: includes/Extensions/Elementor/FormWidget.php:129
 msgid "Form Settings"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:122
+#: includes/Extensions/Elementor/FormWidget.php:135
 msgid "Select Notification ID"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:126
+#: includes/Extensions/Elementor/FormWidget.php:139
 msgid "Submissions are saved as entries against the selected Popup or Exit-Intent campaign."
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:133
+#: includes/Extensions/Elementor/FormWidget.php:146
 #: includes/Types/ContactForm.php:141
 msgid "Form Title"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:135
+#: includes/Extensions/Elementor/FormWidget.php:148
 msgid "Get in touch"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:143
+#: includes/Extensions/Elementor/FormWidget.php:156
 msgid "Name Field"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:147
+#: includes/Extensions/Elementor/FormWidget.php:162
 msgid "Show Name"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:152
-#: includes/Extensions/Elementor/FormWidget.php:184
-#: includes/Extensions/Elementor/FormWidget.php:216
-#: includes/Extensions/Elementor/FormWidget.php:248
+#: includes/Extensions/Elementor/FormWidget.php:167
+#: includes/Extensions/Elementor/FormWidget.php:213
+#: includes/Extensions/Elementor/FormWidget.php:257
+#: includes/Extensions/Elementor/FormWidget.php:289
 msgid "Column Width"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:161
-#: includes/Extensions/Elementor/FormWidget.php:193
-#: includes/Extensions/Elementor/FormWidget.php:225
+#: includes/Extensions/Elementor/FormWidget.php:176
+#: includes/Extensions/Elementor/FormWidget.php:222
+#: includes/Extensions/Elementor/FormWidget.php:266
 msgid "Label"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:165
-#: includes/Extensions/Elementor/FormWidget.php:197
-#: includes/Extensions/Elementor/FormWidget.php:229
+#: includes/Extensions/Elementor/FormWidget.php:180
+#: includes/Extensions/Elementor/FormWidget.php:226
+#: includes/Extensions/Elementor/FormWidget.php:270
 msgid "Placeholder"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:165
+#: includes/Extensions/Elementor/FormWidget.php:180
 msgid "Your name"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:169
-#: includes/Extensions/Elementor/FormWidget.php:201
-#: includes/Extensions/Elementor/FormWidget.php:237
+#: includes/Extensions/Elementor/FormWidget.php:184
+#: includes/Extensions/Elementor/FormWidget.php:230
+#: includes/Extensions/Elementor/FormWidget.php:278
 msgid "Required"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:175
+#: includes/Extensions/Elementor/FormWidget.php:193
+msgid "The Name field is available in NotificationX Pro."
+msgstr ""
+
+#: includes/Extensions/Elementor/FormWidget.php:202
 msgid "Email Field"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:179
+#: includes/Extensions/Elementor/FormWidget.php:208
 msgid "Show Email"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:193
+#: includes/Extensions/Elementor/FormWidget.php:222
 msgid "Email"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:197
+#: includes/Extensions/Elementor/FormWidget.php:226
 msgid "you@example.com"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:207
+#: includes/Extensions/Elementor/FormWidget.php:239
+msgid "The Email field is available in NotificationX Pro."
+msgstr ""
+
+#: includes/Extensions/Elementor/FormWidget.php:248
 msgid "Message Field"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:229
+#: includes/Extensions/Elementor/FormWidget.php:270
 msgid "Write your message…"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:233
+#: includes/Extensions/Elementor/FormWidget.php:274
 msgid "Rows"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:243
-#: includes/Extensions/Elementor/FormWidget.php:256
-#: includes/Extensions/Elementor/FormWidget.php:624
+#: includes/Extensions/Elementor/FormWidget.php:284
+#: includes/Extensions/Elementor/FormWidget.php:297
+#: includes/Extensions/Elementor/FormWidget.php:673
 #: includes/Extensions/PopupNotification/PopupNotification.php:78
 #: includes/Extensions/PopupNotification/PopupNotification.php:89
 msgid "Submit"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:256
+#: includes/Extensions/Elementor/FormWidget.php:297
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1165
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1246
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1374
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1541
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1579
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1755
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1757
 #: includes/Extensions/PopupNotification/PopupNotification.php:711
 #: includes/Extensions/PressBar/PressBar.php:1774
 #: includes/Extensions/PressBar/PressBar.php:1864
@@ -3030,80 +3046,80 @@ msgstr ""
 msgid "Button Text"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:260
+#: includes/Extensions/Elementor/FormWidget.php:301
 msgid "Success Message"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:260
+#: includes/Extensions/Elementor/FormWidget.php:301
 msgid "Thanks! Your submission has been received."
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:264
+#: includes/Extensions/Elementor/FormWidget.php:305
 msgid "Error Message"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:264
+#: includes/Extensions/Elementor/FormWidget.php:305
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:272
+#: includes/Extensions/Elementor/FormWidget.php:313
 msgid "Form"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:309
+#: includes/Extensions/Elementor/FormWidget.php:350
 msgid "Fields"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:329
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1857
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2148
+#: includes/Extensions/Elementor/FormWidget.php:370
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1859
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2150
 #: includes/Extensions/PopupNotification/PopupNotification.php:423
 msgid "Input Text Color"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:338
+#: includes/Extensions/Elementor/FormWidget.php:379
 msgid "Input Background"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:347
+#: includes/Extensions/Elementor/FormWidget.php:388
 msgid "Placeholder Color"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:362
+#: includes/Extensions/Elementor/FormWidget.php:403
 msgid "Placeholder Typography"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:398
+#: includes/Extensions/Elementor/FormWidget.php:439
 msgid "Row Gap (Vertical)"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:410
+#: includes/Extensions/Elementor/FormWidget.php:451
 msgid "Column Gap (Horizontal)"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:424
+#: includes/Extensions/Elementor/FormWidget.php:465
 #: includes/Extensions/GlobalFields.php:995
 msgid "Button"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:434
+#: includes/Extensions/Elementor/FormWidget.php:475
 msgid "Normal"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:441
-#: includes/Extensions/Elementor/FormWidget.php:452
+#: includes/Extensions/Elementor/FormWidget.php:482
+#: includes/Extensions/Elementor/FormWidget.php:493
 msgid "Background"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:445
+#: includes/Extensions/Elementor/FormWidget.php:486
 msgid "Hover"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:493
+#: includes/Extensions/Elementor/FormWidget.php:534
 msgid "Justified"
 msgstr ""
 
-#: includes/Extensions/Elementor/FormWidget.php:542
+#: includes/Extensions/Elementor/FormWidget.php:591
 msgid "Select a NotificationX campaign in the Form Settings to start collecting entries."
 msgstr ""
 
@@ -3186,7 +3202,7 @@ msgid "Custom Height"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:375
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2197
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2199
 #: includes/Extensions/GlobalFields.php:405
 #: includes/Extensions/GlobalFields.php:421
 #: includes/Extensions/GlobalFields.php:591
@@ -3262,6 +3278,7 @@ msgstr ""
 #: includes/Extensions/PopupNotification/PopupNotification.php:953
 #: includes/Types/ExitIntent.php:34
 #: includes/Types/ExitIntent.php:35
+#: assets/admin/js/admin.js:13
 msgid "Exit Intent Popup"
 msgstr ""
 
@@ -3274,7 +3291,7 @@ msgid "We'd love to get your feedback and help us make this better for everyone.
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:599
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1758
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1760
 msgid "SUBMIT"
 msgstr ""
 
@@ -3284,12 +3301,12 @@ msgid "Name *"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:603
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1733
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1734
 msgid "Enter Your Email *"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:605
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1748
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1750
 msgid "Your message..."
 msgstr ""
 
@@ -3335,6 +3352,7 @@ msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:630
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1272
+#: assets/admin/js/admin.js:13
 msgid "No, thanks!"
 msgstr ""
 
@@ -3379,6 +3397,7 @@ msgstr ""
 #: includes/Extensions/OfferAnnouncement/Announcements.php:68
 #: includes/Extensions/OfferAnnouncement/Announcements.php:88
 #: includes/Types/PageAnalytics.php:125
+#: assets/admin/js/admin.js:13
 msgid "Grab Now"
 msgstr ""
 
@@ -3401,6 +3420,7 @@ msgstr ""
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:687
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1162
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1371
+#: assets/admin/js/admin.js:13
 msgid "ON ENTIRE ORDER"
 msgstr ""
 
@@ -3499,6 +3519,7 @@ msgstr ""
 #: includes/Extensions/GlobalFields.php:73
 #: includes/Extensions/PressBar/PressBar.php:843
 #: includes/Extensions/PressBar/PressBar.php:1050
+#: assets/admin/js/admin.js:13
 msgid "Next"
 msgstr ""
 
@@ -3709,7 +3730,7 @@ msgid "Discover timeless pieces that turn any space into a sanctuary."
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1534
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1730
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1731
 msgid "Email Placeholder"
 msgstr ""
 
@@ -3738,157 +3759,139 @@ msgstr ""
 msgid "Name Placeholder"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1722
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1723
 #: includes/Extensions/PopupNotification/PopupNotification.php:649
 msgid "Show Email Field"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1738
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1740
 #: includes/Extensions/PopupNotification/PopupNotification.php:679
 msgid "Show Message Field"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1745
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1747
 msgid "Message Placeholder"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1822
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1824
 #: includes/Extensions/PopupNotification/PopupNotification.php:249
 #: includes/Extensions/PopupNotification/PopupNotification.php:361
 #: includes/Extensions/PopupNotification/PopupNotification.php:517
 msgid "Normal (400)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1823
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1825
 #: includes/Extensions/PopupNotification/PopupNotification.php:250
 #: includes/Extensions/PopupNotification/PopupNotification.php:362
 #: includes/Extensions/PopupNotification/PopupNotification.php:518
 msgid "Medium (500)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1824
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1826
 #: includes/Extensions/PopupNotification/PopupNotification.php:251
 #: includes/Extensions/PopupNotification/PopupNotification.php:363
 #: includes/Extensions/PopupNotification/PopupNotification.php:519
 msgid "Semi Bold (600)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1825
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1827
 #: includes/Extensions/PopupNotification/PopupNotification.php:252
 #: includes/Extensions/PopupNotification/PopupNotification.php:364
 #: includes/Extensions/PopupNotification/PopupNotification.php:520
 msgid "Bold (700)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1826
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1828
 #: includes/Extensions/PopupNotification/PopupNotification.php:253
 msgid "Extra Bold (800)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1834
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1877
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1917
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1964
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1998
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2057
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2115
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1836
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1879
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1919
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1966
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2000
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2059
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2117
 msgid "Popup Max Width"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1837
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1880
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1920
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1967
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2001
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2064
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2121
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1839
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1882
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1922
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1969
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2003
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2066
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2123
 #: includes/Extensions/PopupNotification/PopupNotification.php:181
 msgid "Overlay Background Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1838
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1840
 msgid "Color of the backdrop behind the popup."
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1839
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1841
 msgid "Show Background Pattern"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1840
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1842
 msgid "Pattern Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1845
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1926
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1978
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2007
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2070
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1847
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1928
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1980
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2009
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2072
 #: includes/Extensions/GDPR/GDPR_Notification.php:93
 #: includes/Extensions/PopupNotification/PopupNotification.php:237
 msgid "Title Font Size"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1846
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1927
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1979
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2008
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2071
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1848
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1929
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1981
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2010
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2073
 #: includes/Extensions/PopupNotification/PopupNotification.php:244
 msgid "Title Font Weight"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1850
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1931
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1983
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1852
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1933
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1985
 #: includes/Extensions/PopupNotification/PopupNotification.php:257
 msgid "Subtitle Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1851
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1932
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1984
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1853
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1934
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1986
 #: includes/Extensions/PopupNotification/PopupNotification.php:263
 msgid "Subtitle Font Size"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1854
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2145
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1856
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2147
 #: includes/Extensions/PopupNotification/PopupNotification.php:418
 msgid "Input Background Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1855
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2146
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1857
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2148
 #: includes/Extensions/PopupNotification/PopupNotification.php:428
 msgid "Input Border Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1856
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2147
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1858
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2149
 #: includes/Extensions/PopupNotification/PopupNotification.php:456
 msgid "Input Border Radius"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1860
-msgid "Button Background Color"
-msgstr ""
-
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1861
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1901
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1948
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2041
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2094
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2152
-msgid "Button Text Color"
-msgstr ""
-
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1862
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1902
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1949
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2042
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2095
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2153
-msgid "Button Border Radius"
+msgid "Button Background Color"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1863
@@ -3897,7 +3900,7 @@ msgstr ""
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2043
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2096
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2154
-msgid "Button Font Size"
+msgid "Button Text Color"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1864
@@ -3906,282 +3909,300 @@ msgstr ""
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2044
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2097
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2155
+msgid "Button Border Radius"
+msgstr ""
+
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1865
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1905
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1952
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2045
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2098
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2156
+msgid "Button Font Size"
+msgstr ""
+
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1866
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1906
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1953
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2046
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2099
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2157
 msgid "Button Font Weight"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1868
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1881
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1921
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1968
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2002
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2065
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2122
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1870
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1883
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1923
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1970
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2004
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2067
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2124
 #: includes/Extensions/GDPR/GDPR_Notification.php:115
 #: includes/Extensions/PopupNotification/PopupNotification.php:207
 #: includes/Extensions/PressBar/PressBar.php:586
 msgid "Close Button Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1869
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1882
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1922
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1969
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2003
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2066
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2123
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1871
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1884
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1924
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1971
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2005
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2068
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2125
 #: includes/Extensions/GDPR/GDPR_Notification.php:129
 #: includes/Extensions/PopupNotification/PopupNotification.php:212
 #: includes/Extensions/PressBar/PressBar.php:591
 msgid "Close Button Size"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1879
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2000
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1881
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2002
 msgid "Left Panel Background"
-msgstr ""
-
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1885
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1972
-msgid "Badge Background"
-msgstr ""
-
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1886
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1973
-msgid "Badge Text Color"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1887
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1974
+msgid "Badge Background"
+msgstr ""
+
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1888
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1975
+msgid "Badge Text Color"
+msgstr ""
+
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1889
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1976
 msgid "Badge Font Size"
-msgstr ""
-
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1890
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2012
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2126
-msgid "Headline Color"
-msgstr ""
-
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1891
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2013
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2127
-msgid "Headline Font Size"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1892
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2014
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2128
+msgid "Headline Color"
+msgstr ""
+
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1893
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2015
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2129
+msgid "Headline Font Size"
+msgstr ""
+
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1894
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2016
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2130
 msgid "Headline Font Weight"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1896
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2018
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2141
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1898
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2020
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2143
 #: includes/Extensions/GDPR/GDPR_Notification.php:101
 msgid "Description Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1897
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2019
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2142
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1899
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2021
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2144
 #: includes/Extensions/GDPR/GDPR_Notification.php:107
 msgid "Description Font Size"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1900
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1947
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2040
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2093
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2151
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1902
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1949
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2042
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2095
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2153
 msgid "Button Background"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1908
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1955
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2048
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1910
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1957
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2050
 msgid "Dismiss Text Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1909
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1956
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2049
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1911
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1958
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2051
 msgid "Dismiss Font Size"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1935
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1937
 msgid "Offer Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1936
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1938
 msgid "Offer Font Size"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1937
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1939
 msgid "Offer Font Weight"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1941
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1943
 msgid "Coupon Block Background"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1942
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1944
 #: includes/Extensions/PressBar/PressBar.php:1914
 msgid "Coupon Text Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1943
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1945
 msgid "Coupon Font Size"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1944
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1946
 msgid "Coupon Block Border Radius"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1987
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1989
 msgid "Video Wrapper Background"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1988
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1990
 msgid "Video Wrapper Border Radius"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1989
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1991
 msgid "Play Icon Background"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1990
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:1992
 msgid "Play Icon Color"
-msgstr ""
-
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2022
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2075
-msgid "Countdown Label Color"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2024
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2077
-msgid "Countdown Label Font Size"
+msgid "Countdown Label Color"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2026
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2079
-msgid "Countdown Number Background"
+msgid "Countdown Label Font Size"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2028
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2081
-msgid "Countdown Number Color"
+msgid "Countdown Number Background"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2030
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2083
-msgid "Countdown Number Font Size"
+msgid "Countdown Number Color"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2032
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2085
-msgid "Countdown Number Border Radius"
+msgid "Countdown Number Font Size"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2034
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2087
-msgid "Countdown Unit Label Color"
+msgid "Countdown Number Border Radius"
 msgstr ""
 
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2036
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2089
+msgid "Countdown Unit Label Color"
+msgstr ""
+
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2038
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2091
 msgid "Countdown Unit Label Font Size"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2059
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2061
 msgid "Background Start Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2060
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2062
 msgid "Center color of the radial background gradient."
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2061
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2063
 msgid "Background Mid Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2062
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2064
 msgid "Background End Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2063
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2065
 msgid "Outer color of the radial background gradient."
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2105
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2107
 msgid "Default (inherit)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2106
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2108
 msgid "Playfair Display (serif)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2107
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2109
 msgid "Georgia (serif)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2108
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2110
 msgid "Times New Roman (serif)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2109
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2111
 msgid "Inter (sans-serif)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2110
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2112
 msgid "Helvetica (sans-serif)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2118
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2120
 msgid "Right (content) panel background."
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2119
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2121
 msgid "Image Panel Background"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2120
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2122
 msgid "Shown behind the image (visible only if the image leaves transparent areas or fails to load)."
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2130
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2132
 msgid "Headline Font Family"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2134
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2136
 msgid "Discount Banner Background"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2135
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2137
 msgid "Discount Banner Border Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2136
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2138
 msgid "Discount Banner Text Color"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2137
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2139
 msgid "Discount Banner Font Size"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2138
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2140
 msgid "Discount Banner Border Radius"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2184
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2186
 msgid "Exit Intent Settings"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2191
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2193
 #: includes/Extensions/PopupNotification/PopupNotification.php:1015
 msgid "Show Close Button"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2203
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2205
 #: includes/Extensions/GlobalFields.php:410
 #: includes/Extensions/GlobalFields.php:1757
 #: includes/Extensions/GlobalFields.php:1842
@@ -4189,7 +4210,7 @@ msgstr ""
 msgid "Bottom Left"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2204
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2206
 #: includes/Extensions/GlobalFields.php:411
 #: includes/Extensions/GlobalFields.php:1761
 #: includes/Extensions/GlobalFields.php:1846
@@ -4197,47 +4218,47 @@ msgstr ""
 msgid "Bottom Right"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2208
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2210
 msgid "Trigger Sensitivity"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2212
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2214
 msgid "Distance from top of viewport (px) that triggers the popup."
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2214
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2216
 msgid "High (10px)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2215
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2217
 msgid "Medium (20px)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2216
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2218
 msgid "Low (50px)"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2220
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2222
 msgid "Do Not Show Again For"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2224
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2226
 msgid "days"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2225
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2227
 msgid "Once dismissed, hide the popup for this many days."
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2228
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2230
 msgid "Disable on Mobile"
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2232
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2234
 msgid "Exit intent detection is unreliable on touch devices."
 msgstr ""
 
-#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2241
+#: includes/Extensions/ExitIntent/ExitIntentNotification.php:2243
 msgid ""
 "\n"
 "        <p>Show a targeted message at the exact moment someone is about to close your tab & bring them back into the funnel. Need help? Check out our <a target=\"_blank\" href=\"%1$s\">documentation</a>.</p>"
@@ -4247,6 +4268,7 @@ msgstr ""
 #: includes/Extensions/FlashingTab/FlashingTab.php:53
 #: includes/Types/FlashingTab.php:43
 #: includes/Types/FlashingTab.php:44
+#: assets/admin/js/admin.js:13
 msgid "Flashing Tab"
 msgstr ""
 
@@ -4668,6 +4690,7 @@ msgid ""
 msgstr ""
 
 #: includes/Extensions/GlobalFields.php:72
+#: assets/admin/js/admin.js:13
 msgid "Previous"
 msgstr ""
 
@@ -5773,6 +5796,7 @@ msgstr ""
 #: includes/Extensions/OfferAnnouncement/Announcements.php:47
 #: includes/Extensions/OfferAnnouncement/Announcements.php:48
 #: includes/Types/OfferAnnouncement.php:47
+#: assets/admin/js/admin.js:13
 msgid "Discount Alert"
 msgstr ""
 
@@ -5855,6 +5879,7 @@ msgstr ""
 #: includes/Extensions/PopupNotification/PopupNotification.php:50
 #: includes/Types/Popup.php:48
 #: includes/Types/Popup.php:49
+#: assets/admin/js/admin.js:13
 msgid "Announcement"
 msgstr ""
 
@@ -6212,6 +6237,7 @@ msgstr ""
 #: includes/Extensions/PopupNotification/PopupNotification.php:715
 #: includes/Extensions/PressBar/PressBar.php:99
 #: includes/Extensions/PressBar/PressBar.php:1776
+#: assets/admin/js/admin.js:13
 msgid "Get Offer"
 msgstr ""
 
@@ -7172,16 +7198,16 @@ msgstr ""
 msgid "Talk to Support"
 msgstr ""
 
-#: includes/NotificationX.php:154
+#: includes/NotificationX.php:157
 msgid "Opps! This is PRO Feature."
 msgstr ""
 
-#: includes/NotificationX.php:180
+#: includes/NotificationX.php:183
 #: assets/admin/js/admin.js:11
 msgid "Settings"
 msgstr ""
 
-#: includes/NotificationX.php:185
+#: includes/NotificationX.php:188
 msgid "Go Pro"
 msgstr ""
 
@@ -7205,6 +7231,7 @@ msgstr ""
 #: includes/Types/GDPR.php:185
 #: includes/Types/GDPR.php:199
 #: includes/Types/GDPR.php:213
+#: assets/admin/js/admin.js:13
 msgid "commented on"
 msgstr ""
 
@@ -7253,6 +7280,7 @@ msgstr ""
 #: includes/Types/WooCommerceSales.php:86
 #: includes/Types/WooCommerceSales.php:102
 #: includes/Types/WooCommerceSales.php:114
+#: assets/admin/js/admin.js:13
 msgid "Buy now"
 msgstr ""
 
@@ -7333,6 +7361,7 @@ msgid "in total active"
 msgstr ""
 
 #: includes/Types/ELearning.php:59
+#: assets/admin/js/admin.js:13
 msgid "just enrolled"
 msgstr ""
 
@@ -7752,6 +7781,7 @@ msgstr ""
 #: assets/admin/js/635.js:1
 #: assets/admin/js/736.js:1
 #: assets/admin/js/929.js:1
+#: assets/admin/js/admin.js:13
 #: assets/public/4468.js:1
 #: assets/public/5223.js:1
 #: assets/public/6435.js:1
@@ -8299,6 +8329,7 @@ msgid "Manage License"
 msgstr ""
 
 #: assets/admin/js/admin.js:11
+#: assets/admin/js/admin.js:13
 msgid "Upgrade to Pro"
 msgstr ""
 
@@ -8375,6 +8406,7 @@ msgid "Create Now"
 msgstr ""
 
 #: assets/admin/js/admin.js:11
+#: assets/admin/js/admin.js:13
 #: assets/public/js/crossSite.js:1
 #: assets/public/js/frontend.js:1
 msgid "Display your latest sales to boost credibility and drive more conversions."
@@ -8779,6 +8811,351 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
+#: assets/admin/js/admin.js:13
+msgid "Verified by NotificationX"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Purchased"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "2 days ago"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "sold in last"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "10 Proven Strategies to Increase…"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "WordPress Plugin Development"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "11 minutes ago"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Mega Sale —"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "50% Off"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Flash Sale: Limited Offer!"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Use code"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Hurry — ends tonight!"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "FLASH SALE"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Shop The Sale Now"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "We've Got News!"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "New features just landed — see what's new."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "(1) New offer!"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Store"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Alex just purchased!"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Pro Plan • 2 mins ago"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Sarah just signed up!"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Yoga Starter Kit • just now"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "James just purchased!"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Annual Plan • 5 mins ago"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Emma just purchased!"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Headphones • 8 mins ago"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "My Store"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Live"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "This is how your notifications appear to visitors."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Welcome"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Business Details"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Recommended"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Finish"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Increase Conversions"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Build Social Proof"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Create Urgency"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Boost Engagement"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Ecommerce Store"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "SaaS Product"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Agency"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Online Course"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Coaching Center"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Blog & Content Website"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Increase Sales"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Collect Leads"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Get More Signups"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Promote Courses"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Announce latest sales, discounts, or important updates to every visitor."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "eLearning Notification"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Show live course enrollments to build momentum and drive more sign-ups."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Reviews Notification"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Showcase real customer reviews and ratings to build trust and credibility."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Catch leaving visitors with a targeted popup and capture leads before they go."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Show a centered announcement popup to capture leads, promote offers, and grab attention."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Display limited-time course offers and discounts to nudge instant enrollments."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Show sales count & low-stock alerts to influence instant purchases."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Grab attention with a flashing browser tab and turn browsing into buying."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Welcome to NotificationX"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Let's personalize your experience and recommend the best notification campaigns for your business."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Get Started"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Skip Setup"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "By proceeding, you agree that we will collect your email address to personalize your setup experience."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Business Type"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Tell us about your industry."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Primary Goals"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Select what you want to achieve."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Recommended Campaigns for Your Business"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Based on your goals, here's a mix of free and premium campaigns to get you started."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Pro"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Free"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Configure"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Back to Business Details"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Continue to Final Step"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "You're All Set!"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "NotificationX is ready to grow your business. Your configuration is saved and your account is fully optimized."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "BUSINESS TYPE"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "E-commerce Store"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "YOUR GOALS"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Boost Conversions"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Saving…"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Go to Dashboard"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Create My First Campaign"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Back"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "Step"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+msgid "of"
+msgstr ""
+
+#: assets/admin/js/admin.js:13
+#: assets/admin/js/admin.js:20
+msgid "Continue"
+msgstr ""
+
 #. translators: %1$s: title, %2$s: link to the All NotificationX page.
 #: assets/admin/js/admin.js:16
 msgid "You are about to publish %1$s. You can rename this and edit everything whenever you want from %2$s Page."
@@ -8840,10 +9217,6 @@ msgstr ""
 
 #: assets/admin/js/admin.js:20
 msgid "Import Limit Exceeded."
-msgstr ""
-
-#: assets/admin/js/admin.js:20
-msgid "Continue"
 msgstr ""
 
 #: assets/admin/js/admin.js:20
