@@ -16,6 +16,8 @@ use NotificationX\Core\Dashboard;
 use NotificationX\Core\Database;
 use NotificationX\Core\PostType;
 use NotificationX\Core\SetupWizard;
+use NotificationX\Core\UsageTracker;
+use NotificationX\Core\Maintenance;
 use NotificationX\Core\Upgrader;
 use NotificationX\GetInstance;
 use NotificationX\Extensions\ExtensionFactory;
@@ -64,6 +66,8 @@ class Admin {
         ImportExport::get_instance();
         XSS::get_instance();
         InfoTooltipManager::get_instance();
+        UsageTracker::get_instance();
+        Maintenance::get_instance();
         add_action('init', [$this, 'init'], 5);
         add_filter('nx_rest_miscellaneous', [$this, 'handle_miscellaneous_actions'], 10, 2);
         add_filter('nx_builder_configs', [$this, 'add_popup_status_to_context'], 10, 1);
@@ -76,8 +80,12 @@ class Admin {
      * @return void
      */
     public function init(){
+        // Usage insights/tracking must initialize regardless of Pro being
+        // active: Pro ships no insights of its own, so gating this behind
+        // !is_pro() left the put_do_weekly_action cron with no listener and
+        // disabled tracking (incl. the UsageTracker payload) on every Pro site.
+        $this->plugin_usage_insights();
         if( ! NotificationX::is_pro() ){
-            $this->plugin_usage_insights();
             $this->admin_notices();
             $is_embedpress_milestone_showing = get_option('is_embedpress_milestone_showing', false);
             if (!$is_embedpress_milestone_showing) {

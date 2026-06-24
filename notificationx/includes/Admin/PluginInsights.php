@@ -214,7 +214,7 @@ class PluginInsights {
         /**
          * Check URL is set or not.
          */
-        if ( defined('NX_DEBUG') || empty( self::API_URL ) ) {
+        if ( ( defined('NX_DEBUG') && NX_DEBUG ) || empty( self::API_URL ) ) {
             return;
         }
         /**
@@ -417,6 +417,18 @@ class PluginInsights {
         if ( $theme->Version ) {
             $body['theme_version'] = sanitize_text_field( $theme->Version );
         }
+
+        /**
+         * Allow plugin-specific usage data to be merged into the tracking
+         * payload (e.g. NotificationX notification type & source breakdown).
+         *
+         * @see \NotificationX\Core\UsageTracker
+         * @since 3.3.0
+         * @param array         $body Collected tracking data.
+         * @param PluginInsights $this Current insights instance.
+         */
+        $body = apply_filters( 'nx_plugin_usage_tracker_data', $body, $this );
+
         return $body;
     }
 

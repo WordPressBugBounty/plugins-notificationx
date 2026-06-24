@@ -1,0 +1,20 @@
+/**
+ * Editor-only styles for the NotificationX Countdown Timer block.
+ */
+
+/* Keep inspector labels consistent with the other NotificationX blocks. */
+.components-base-control__label,
+.dimention-label {
+  font-weight: 500 !important;
+  color: #000 !important;
+}
+
+.nx-color-control {
+  margin-left: -16px;
+  margin-right: -16px;
+}
+
+/* The live preview should fill the block width in the editor. */
+.wp-block .nx-countdown-wrapper {
+  width: 100%;
+}

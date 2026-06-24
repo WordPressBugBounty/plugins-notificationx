@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-3.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: NotificationX 3.2.9\n"
+"Project-Id-Version: NotificationX 3.2.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/notificationx\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-18T11:23:06+00:00\n"
+"POT-Creation-Date: 2026-06-24T11:53:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: notificationx\n"
@@ -48,52 +48,52 @@ msgstr ""
 msgid "https://wpdeveloper.com"
 msgstr ""
 
-#: blocks/Blocks.php:173
+#: blocks/Blocks.php:234
 msgid "There is no data in this notification."
 msgstr ""
 
-#: includes/Admin/Admin.php:124
+#: includes/Admin/Admin.php:132
 #: assets/admin/js/admin.js:11
 msgid "All NotificationX"
 msgstr ""
 
-#: includes/Admin/Admin.php:226
+#: includes/Admin/Admin.php:234
 msgid "We hope you're enjoying NotificationX! Could you please do us a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?"
 msgstr ""
 
-#: includes/Admin/Admin.php:231
+#: includes/Admin/Admin.php:239
 msgid "Ok, you deserve it!"
 msgstr ""
 
-#: includes/Admin/Admin.php:235
+#: includes/Admin/Admin.php:243
 msgid "I already did"
 msgstr ""
 
-#: includes/Admin/Admin.php:242
+#: includes/Admin/Admin.php:250
 msgid "Maybe Later"
 msgstr ""
 
-#: includes/Admin/Admin.php:250
+#: includes/Admin/Admin.php:258
 msgid "I need help"
 msgstr ""
 
-#: includes/Admin/Admin.php:254
+#: includes/Admin/Admin.php:262
 msgid "Never show again"
 msgstr ""
 
-#: includes/Admin/Admin.php:287
+#: includes/Admin/Admin.php:295
 msgid "<p><strong>Black Friday Exclusive:</strong> SAVE up to 40% & access to <strong>NotificationX Pro</strong> features.</p>"
 msgstr ""
 
-#: includes/Admin/Admin.php:287
+#: includes/Admin/Admin.php:295
 msgid "Grab The Offer"
 msgstr ""
 
-#: includes/Admin/Admin.php:421
+#: includes/Admin/Admin.php:429
 msgid "Want to help make <strong>NotificationX</strong> even more awesome? You can get a <strong>10% discount coupon</strong> for Premium extensions if you allow us to track the usage."
 msgstr ""
 
-#: includes/Admin/Admin.php:422
+#: includes/Admin/Admin.php:430
 msgid ""
 "We collect non-sensitive diagnostic data and plugin usage information.\n"
 "\t\t\tYour site URL, WordPress & PHP version, plugins & themes and email address to send you the\n"
@@ -440,6 +440,8 @@ msgstr ""
 
 #: includes/Admin/Settings.php:133
 #: includes/Admin/Settings.php:169
+#: blocks/countdown/components/inspector.js:112
+#: blocks/countdown/index.js:1
 msgid "General"
 msgstr ""
 
@@ -2483,31 +2485,43 @@ msgid "In last 30 days"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:32
+#: blocks/countdown/index.js:1
+#: blocks/countdown/index.jsx:8
 msgid "NotificationX Countdown Timer"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:63
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1407
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1605
+#: blocks/countdown/components/inspector.js:120
+#: blocks/countdown/index.js:1
 msgid "Timer Settings"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:70
 #: assets/admin/js/admin.js:1
 #: assets/admin/js/admin.js:13
+#: blocks/countdown/components/inspector.js:122
+#: blocks/countdown/index.js:1
 msgid "Type"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:73
+#: blocks/countdown/components/constants.js:13
+#: blocks/countdown/index.js:1
 msgid "Default (Due Date)"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:74
 #: includes/Extensions/PressBar/PressBar.php:1952
+#: blocks/countdown/components/constants.js:14
+#: blocks/countdown/index.js:1
 msgid "Evergreen Timer"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:83
+#: blocks/countdown/components/inspector.js:129
+#: blocks/countdown/index.js:1
 msgid "Countdown Due Date"
 msgstr ""
 
@@ -2520,6 +2534,9 @@ msgstr ""
 #: includes/Extensions/Elementor/CountdownWidget.php:264
 #: includes/Extensions/Elementor/CountdownWidget.php:650
 #: includes/Extensions/GlobalFields.php:2231
+#: blocks/countdown/components/inspector.js:42
+#: blocks/countdown/components/inspector.js:138
+#: blocks/countdown/index.js:1
 msgid "Hours"
 msgstr ""
 
@@ -2528,14 +2545,21 @@ msgstr ""
 #: includes/Extensions/Elementor/CountdownWidget.php:286
 #: includes/Extensions/Elementor/CountdownWidget.php:651
 #: includes/Extensions/GlobalFields.php:2240
+#: blocks/countdown/components/inspector.js:43
+#: blocks/countdown/components/inspector.js:144
+#: blocks/countdown/index.js:1
 msgid "Minutes"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:116
+#: blocks/countdown/components/inspector.js:150
+#: blocks/countdown/index.js:1
 msgid "Recurring Countdown"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:127
+#: blocks/countdown/components/inspector.js:157
+#: blocks/countdown/index.js:1
 msgid "Restart After (Hours)"
 msgstr ""
 
@@ -2544,6 +2568,8 @@ msgid "How long to wait before restarting. 0 = restart immediately."
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:141
+#: blocks/countdown/components/inspector.js:164
+#: blocks/countdown/index.js:1
 msgid "Recurring End Date"
 msgstr ""
 
@@ -2552,6 +2578,8 @@ msgid "The absolute end date for the recurring countdown."
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:158
+#: blocks/countdown/components/inspector.js:176
+#: blocks/countdown/index.js:1
 msgid "Content Settings"
 msgstr ""
 
@@ -2561,26 +2589,38 @@ msgid "Layout"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:173
+#: blocks/countdown/components/inspector.js:178
+#: blocks/countdown/index.js:1
 msgid "View"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:177
+#: blocks/countdown/components/constants.js:18
+#: blocks/countdown/index.js:1
 msgid "Grid View"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:181
+#: blocks/countdown/components/constants.js:19
+#: blocks/countdown/index.js:1
 msgid "List View"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:193
+#: blocks/countdown/components/inspector.js:184
+#: blocks/countdown/index.js:1
 msgid "Label Position"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:197
+#: blocks/countdown/components/constants.js:23
+#: blocks/countdown/index.js:1
 msgid "Block"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:198
+#: blocks/countdown/components/constants.js:24
+#: blocks/countdown/index.js:1
 msgid "Inline"
 msgstr ""
 
@@ -2588,6 +2628,9 @@ msgstr ""
 #: includes/Extensions/Elementor/CountdownWidget.php:724
 #: includes/Extensions/Elementor/FormWidget.php:319
 #: includes/Extensions/Elementor/FormWidget.php:528
+#: blocks/countdown/components/inspector.js:189
+#: blocks/countdown/components/inspector.js:408
+#: blocks/countdown/index.js:1
 #: blocks/notificationx/components/inspector.js:226
 #: blocks/notificationx/components/inspector.js:260
 #: blocks/notificationx/index.js:1
@@ -2602,6 +2645,8 @@ msgstr ""
 #: includes/Extensions/PressBar/PressBar.php:485
 #: includes/Extensions/PressBar/PressBar.php:624
 #: includes/Extensions/PressBar/PressBar.php:641
+#: blocks/countdown/components/constants.js:33
+#: blocks/countdown/index.js:1
 msgid "Left"
 msgstr ""
 
@@ -2614,6 +2659,8 @@ msgstr ""
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2204
 #: includes/Extensions/GlobalFields.php:412
 #: includes/Extensions/PopupNotification/PopupNotification.php:947
+#: blocks/countdown/components/constants.js:34
+#: blocks/countdown/index.js:1
 msgid "Center"
 msgstr ""
 
@@ -2625,16 +2672,22 @@ msgstr ""
 #: includes/Extensions/PressBar/PressBar.php:492
 #: includes/Extensions/PressBar/PressBar.php:625
 #: includes/Extensions/PressBar/PressBar.php:663
+#: blocks/countdown/components/constants.js:35
+#: blocks/countdown/index.js:1
 msgid "Right"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:230
+#: blocks/countdown/components/inspector.js:194
+#: blocks/countdown/index.js:1
 msgid "Display Days"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:240
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1441
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1639
+#: blocks/countdown/components/inspector.js:200
+#: blocks/countdown/index.js:1
 msgid "Days Label"
 msgstr ""
 
@@ -2646,6 +2699,8 @@ msgstr ""
 #: includes/Extensions/PressBar/PressBar.php:1148
 #: assets/public/js/crossSite.js:1
 #: assets/public/js/frontend.js:1
+#: blocks/countdown/components/inspector.js:41
+#: blocks/countdown/index.js:1
 msgid "Days"
 msgstr ""
 
@@ -2657,70 +2712,100 @@ msgid "Leave blank to hide."
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:252
+#: blocks/countdown/components/inspector.js:206
+#: blocks/countdown/index.js:1
 msgid "Display Hours"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:262
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1449
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1647
+#: blocks/countdown/components/inspector.js:212
+#: blocks/countdown/index.js:1
 msgid "Hours Label"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:274
+#: blocks/countdown/components/inspector.js:218
+#: blocks/countdown/index.js:1
 msgid "Display Minutes"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:284
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1457
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1655
+#: blocks/countdown/components/inspector.js:224
+#: blocks/countdown/index.js:1
 msgid "Minutes Label"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:296
+#: blocks/countdown/components/inspector.js:230
+#: blocks/countdown/index.js:1
 msgid "Display Seconds"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:306
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1465
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:1663
+#: blocks/countdown/components/inspector.js:236
+#: blocks/countdown/index.js:1
 msgid "Seconds Label"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:308
 #: includes/Extensions/Elementor/CountdownWidget.php:652
 #: includes/Types/GDPR.php:275
+#: blocks/countdown/components/inspector.js:44
+#: blocks/countdown/index.js:1
 msgid "Seconds"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:318
+#: blocks/countdown/components/inspector.js:377
+#: blocks/countdown/index.js:1
 msgid "Separator"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:326
+#: blocks/countdown/components/inspector.js:243
+#: blocks/countdown/index.js:1
 msgid "Display Separator"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:336
+#: blocks/countdown/components/inspector.js:249
+#: blocks/countdown/index.js:1
 msgid "Separator Style"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:340
+#: blocks/countdown/components/constants.js:28
+#: blocks/countdown/index.js:1
 msgid "Solid ( : )"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:341
+#: blocks/countdown/components/constants.js:29
+#: blocks/countdown/index.js:1
 msgid "Dotted ( · )"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:350
+#: blocks/countdown/components/inspector.js:381
+#: blocks/countdown/index.js:1
 msgid "Separator Color"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:365
+#: blocks/countdown/components/inspector.js:258
+#: blocks/countdown/index.js:1
 msgid "Expire Action"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:372
+#: blocks/countdown/components/inspector.js:260
+#: blocks/countdown/index.js:1
 msgid "On Expire"
 msgstr ""
 
@@ -2738,19 +2823,27 @@ msgstr ""
 #: includes/Extensions/Google/YouTube.php:239
 #: includes/Extensions/Google/YouTube.php:243
 #: includes/Types/Donations.php:170
+#: blocks/countdown/components/constants.js:39
+#: blocks/countdown/index.js:1
 msgid "None"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:377
 #: includes/Extensions/Elementor/FormWidget.php:252
+#: blocks/countdown/components/constants.js:40
+#: blocks/countdown/index.js:1
 msgid "Show Message"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:378
+#: blocks/countdown/components/constants.js:41
+#: blocks/countdown/index.js:1
 msgid "Redirect to URL"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:387
+#: blocks/countdown/components/inspector.js:268
+#: blocks/countdown/index.js:1
 msgid "Expiry Title"
 msgstr ""
 
@@ -2759,6 +2852,8 @@ msgid "The countdown is finished!"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:398
+#: blocks/countdown/components/inspector.js:273
+#: blocks/countdown/index.js:1
 msgid "Expiry Content"
 msgstr ""
 
@@ -2767,10 +2862,14 @@ msgid "Thank you for being part of this event."
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:408
+#: blocks/countdown/components/inspector.js:281
+#: blocks/countdown/index.js:1
 msgid "Redirect URL"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:426
+#: blocks/countdown/components/inspector.js:292
+#: blocks/countdown/index.js:1
 msgid "Countdown Box"
 msgstr ""
 
@@ -2783,10 +2882,14 @@ msgid "Box Background"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:454
+#: blocks/countdown/components/inspector.js:301
+#: blocks/countdown/index.js:1
 msgid "Box Background Color"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:466
+#: blocks/countdown/components/inspector.js:312
+#: blocks/countdown/index.js:1
 msgid "Space Between Boxes"
 msgstr ""
 
@@ -2795,6 +2898,8 @@ msgstr ""
 #: includes/Extensions/Elementor/FormWidget.php:429
 #: includes/Extensions/Elementor/FormWidget.php:517
 #: includes/Extensions/PopupNotification/PopupNotification.php:375
+#: blocks/countdown/components/inspector.js:321
+#: blocks/countdown/index.js:1
 msgid "Padding"
 msgstr ""
 
@@ -2824,10 +2929,14 @@ msgid "Color &amp; Typography"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:531
+#: blocks/countdown/components/inspector.js:336
+#: blocks/countdown/index.js:1
 msgid "Digits"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:539
+#: blocks/countdown/components/inspector.js:340
+#: blocks/countdown/index.js:1
 msgid "Digits Color"
 msgstr ""
 
@@ -2845,26 +2954,38 @@ msgstr ""
 #: includes/Extensions/PopupNotification/PopupNotification.php:176
 #: includes/Extensions/PopupNotification/PopupNotification.php:311
 #: includes/Extensions/PressBar/PressBar.php:549
+#: blocks/countdown/components/inspector.js:341
+#: blocks/countdown/components/inspector.js:396
+#: blocks/countdown/index.js:1
 #: blocks/notificationx/components/inspector.js:313
 #: blocks/notificationx/index.js:1
 msgid "Background Color"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:611
+#: blocks/countdown/components/inspector.js:363
+#: blocks/countdown/index.js:1
 msgid "Labels"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:619
 #: includes/Extensions/Elementor/CountdownWidget.php:689
 #: includes/Extensions/Elementor/FormWidget.php:356
+#: blocks/countdown/components/inspector.js:367
+#: blocks/countdown/components/inspector.js:398
+#: blocks/countdown/index.js:1
 msgid "Label Color"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:643
+#: blocks/countdown/components/inspector.js:388
+#: blocks/countdown/index.js:1
 msgid "Individual Box Styling"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:678
+#: blocks/countdown/components/inspector.js:397
+#: blocks/countdown/index.js:1
 msgid "Digit Color"
 msgstr ""
 
@@ -2874,10 +2995,14 @@ msgstr ""
 #: includes/Extensions/GDPR/GDPR_Notification.php:245
 #: includes/Extensions/GlobalFields.php:511
 #: includes/Extensions/PopupNotification/PopupNotification.php:333
+#: blocks/countdown/components/inspector.js:399
+#: blocks/countdown/index.js:1
 msgid "Border Color"
 msgstr ""
 
 #: includes/Extensions/Elementor/CountdownWidget.php:715
+#: blocks/countdown/components/inspector.js:407
+#: blocks/countdown/index.js:1
 msgid "Expire Message"
 msgstr ""
 
@@ -2890,6 +3015,8 @@ msgstr ""
 #: includes/Extensions/ExitIntent/ExitIntentNotification.php:2071
 #: includes/Extensions/GDPR/GDPR_Notification.php:87
 #: includes/Extensions/PopupNotification/PopupNotification.php:232
+#: blocks/countdown/components/inspector.js:416
+#: blocks/countdown/index.js:1
 msgid "Title Color"
 msgstr ""
 
@@ -2902,6 +3029,8 @@ msgstr ""
 #: includes/Extensions/GlobalFields.php:480
 #: includes/Extensions/PopupNotification/PopupNotification.php:322
 #: includes/Extensions/PressBar/PressBar.php:561
+#: blocks/countdown/components/inspector.js:417
+#: blocks/countdown/index.js:1
 #: blocks/notificationx/components/inspector.js:307
 #: blocks/notificationx/index.js:1
 msgid "Text Color"
@@ -3108,6 +3237,8 @@ msgstr ""
 
 #: includes/Extensions/Elementor/FormWidget.php:482
 #: includes/Extensions/Elementor/FormWidget.php:493
+#: blocks/countdown/components/inspector.js:294
+#: blocks/countdown/index.js:1
 msgid "Background"
 msgstr ""
 
@@ -8406,7 +8537,6 @@ msgid "Create Now"
 msgstr ""
 
 #: assets/admin/js/admin.js:11
-#: assets/admin/js/admin.js:13
 #: assets/public/js/crossSite.js:1
 #: assets/public/js/frontend.js:1
 msgid "Display your latest sales to boost credibility and drive more conversions."
@@ -8924,7 +9054,7 @@ msgid "Live"
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-msgid "This is how your notifications appear to visitors."
+msgid "This is exactly how your notifications will appear to visitors."
 msgstr ""
 
 #: assets/admin/js/admin.js:13
@@ -9000,6 +9130,10 @@ msgid "Promote Courses"
 msgstr ""
 
 #: assets/admin/js/admin.js:13
+msgid "Show real purchases as they happen to boost credibility and conversions."
+msgstr ""
+
+#: assets/admin/js/admin.js:13
 msgid "Announce latest sales, discounts, or important updates to every visitor."
 msgstr ""
 
@@ -9016,7 +9150,7 @@ msgid "Reviews Notification"
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-msgid "Showcase real customer reviews and ratings to build trust and credibility."
+msgid "Turn customer reviews into trust signals that convince hesitant buyers."
 msgstr ""
 
 #: assets/admin/js/admin.js:13
@@ -9040,23 +9174,23 @@ msgid "Grab attention with a flashing browser tab and turn browsing into buying.
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-msgid "Welcome to NotificationX"
+msgid "Welcome to NotificationX — Let’s Turn Activity Into Sales"
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-msgid "Let's personalize your experience and recommend the best notification campaigns for your business."
+msgid "We'll recommend the highest-converting notification campaigns for your store — fully set up in under 2 minutes."
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-msgid "Get Started"
+msgid "Get My Recommendations"
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-msgid "Skip Setup"
+msgid "I'll do this Manually"
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-msgid "By proceeding, you agree that we will collect your email address to personalize your setup experience."
+msgid "By continuing, you agree to let us use your email to tailor your setup. No spam, ever."
 msgstr ""
 
 #: assets/admin/js/admin.js:13
@@ -9064,7 +9198,7 @@ msgid "Business Type"
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-msgid "Tell us about your industry."
+msgid "Pick what describes you best — we'll tailor everything to it."
 msgstr ""
 
 #: assets/admin/js/admin.js:13
@@ -9072,7 +9206,7 @@ msgid "Primary Goals"
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-msgid "Select what you want to achieve."
+msgid "Choose your goals & we'll match the right campaigns. Pick as many as you like."
 msgstr ""
 
 #: assets/admin/js/admin.js:13
@@ -9080,7 +9214,7 @@ msgid "Recommended Campaigns for Your Business"
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-msgid "Based on your goals, here's a mix of free and premium campaigns to get you started."
+msgid "Handpicked for your goals — start with these and you’re live in minutes."
 msgstr ""
 
 #: assets/admin/js/admin.js:13
@@ -9152,8 +9286,7 @@ msgid "of"
 msgstr ""
 
 #: assets/admin/js/admin.js:13
-#: assets/admin/js/admin.js:20
-msgid "Continue"
+msgid "See My Recommendations"
 msgstr ""
 
 #. translators: %1$s: title, %2$s: link to the All NotificationX page.
@@ -9217,6 +9350,10 @@ msgstr ""
 
 #: assets/admin/js/admin.js:20
 msgid "Import Limit Exceeded."
+msgstr ""
+
+#: assets/admin/js/admin.js:20
+msgid "Continue"
 msgstr ""
 
 #: assets/admin/js/admin.js:20
@@ -9516,6 +9653,81 @@ msgstr ""
 
 #: assets/public/js/crossSite.js:1
 msgid "You are using old version of cross-domain scripts for NotificationX Pro. Please update this from your NotificationX Settings page."
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:113
+#: blocks/countdown/index.js:1
+msgid "Style"
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:159
+#: blocks/countdown/index.js:1
+msgid "0 = restart immediately."
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:306
+#: blocks/countdown/index.js:1
+msgid "Background Gradient (CSS)"
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:307
+#: blocks/countdown/index.js:1
+msgid "Optional. e.g. linear-gradient(90deg, #f00, #00f). Overrides the background color."
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:323
+#: blocks/countdown/index.js:1
+msgid "Border & Shadow"
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:334
+#: blocks/countdown/index.js:1
+msgid "Color & Typography"
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:345
+#: blocks/countdown/index.js:1
+msgid "Digits Typography"
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:352
+#: blocks/countdown/index.js:1
+msgid "Digits Padding"
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:354
+#: blocks/countdown/index.js:1
+msgid "Digits Border & Shadow"
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:371
+#: blocks/countdown/index.js:1
+msgid "Label Typography"
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:412
+#: blocks/countdown/index.js:1
+msgid "Colors"
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:421
+#: blocks/countdown/index.js:1
+msgid "Title Typography"
+msgstr ""
+
+#: blocks/countdown/components/inspector.js:426
+#: blocks/countdown/index.js:1
+msgid "Text Typography"
+msgstr ""
+
+#: blocks/countdown/components/preview.js:115
+#: blocks/countdown/index.js:1
+msgid "Page will redirect to the given URL on the frontend."
+msgstr ""
+
+#: blocks/countdown/index.js:1
+#: blocks/countdown/index.jsx:9
+msgid "A due-date or evergreen countdown timer with full styling controls."
 msgstr ""
 
 #: blocks/notificationx/components/inspector.js:112

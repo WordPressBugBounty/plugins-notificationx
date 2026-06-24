@@ -93,6 +93,14 @@ final class StyleHandler {
                 'editor_type' => 'edit-site',
             ]
             );
+            // Override the default 'edit-post' global (set on the controls handle
+            // in Blocks.php) so the inline block reads the core/edit-site store
+            // when used inside the Full Site Editor.
+            wp_localize_script('notificationx-block-controls', 'nx_style_handler', [
+                'sth_nonce'   => wp_create_nonce( 'nx_style_handler_nonce' ),
+                'editor_type' => 'edit-site',
+            ]
+            );
         }
     }
 
