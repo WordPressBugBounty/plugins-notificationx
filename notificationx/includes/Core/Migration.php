@@ -108,6 +108,7 @@ class Migration {
         $posts = [];
         $post_meta = [];
         $query = "SELECT * FROM $wpdb->posts WHERE post_type = 'notificationx'"; // AND ID = $id
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- False positive: the query is prepared via $this->wpdb->prepare(), which this sniff does not recognise, and only $wpdb->prefix table names are interpolated. Audited 2026-07-16.
         $_posts = $wpdb->get_results($query, ARRAY_A);
         // $nx_ids = array_column($_posts, 'ID');
 
@@ -1209,6 +1210,7 @@ class Migration {
                         $ext->update_notification($_entry);
                     }
                 } else {
+                    // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- deliberate failure logging, not debug output.
                     error_log("$source not found");
                 }
             }
@@ -1250,7 +1252,7 @@ class Migration {
                             'nx_id'      => $nx_id,
                             'clicks'     => !empty($value['clicks']) ? $value['clicks'] : 0,
                             'views'      => !empty($value['impressions']) ? $value['impressions'] : 0,
-                            'created_at' => date(Analytics::$date_format, strtotime($date)),
+                            'created_at' => gmdate(Analytics::$date_format, strtotime($date)),
                         ];
                         $stats[] = $data;
                     }

@@ -163,8 +163,9 @@ class PluginInsights {
      * @return void
      */
     private function redirect_to() {
-        $request_uri  = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
-        $query_string = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_QUERY );
+        $current_uri  = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+        $request_uri  = wp_parse_url( $current_uri, PHP_URL_PATH );
+        $query_string = wp_parse_url( $current_uri, PHP_URL_QUERY );
         parse_str( $query_string, $current_url );
 
         $unset_array = array( 'dismiss', 'plugin', '_wpnonce', 'later', 'plugin_action', 'marketing_optin' );
@@ -364,7 +365,7 @@ class PluginInsights {
             }
         }
         $body['marketing_method'] = $this->marketing;
-        $body['server']           = isset( $_SERVER['SERVER_SOFTWARE'] ) ? $_SERVER['SERVER_SOFTWARE'] : '';
+        $body['server']           = isset( $_SERVER['SERVER_SOFTWARE'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) : '';
 
         /**
          * Collect all active and inactive plugins
@@ -393,7 +394,7 @@ class PluginInsights {
          */
         $plugin = $this->plugin_data();
         if ( empty( $plugin ) ) {
-            $body['message'] .= __( 'We can\'t detect any plugin information. This is most probably because you have not included the code in the plugin main file.', 'plugin-usage-tracker' );
+            $body['message'] .= __( 'We can\'t detect any plugin information. This is most probably because you have not included the code in the plugin main file.', 'notificationx' );
             $body['status']   = 'NOT FOUND';
         } else {
             if ( isset( $plugin['Name'] ) ) {
@@ -427,6 +428,7 @@ class PluginInsights {
          * @param array         $body Collected tracking data.
          * @param PluginInsights $this Current insights instance.
          */
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $body = apply_filters( 'nx_plugin_usage_tracker_data', $body, $this );
 
         return $body;
@@ -467,7 +469,7 @@ class PluginInsights {
          */
         if ( $site_id == false && $this->item_id !== false && $original_site_url === false ) {
             if ( isset( $_SERVER['REMOTE_ADDR'] ) && ! empty( $_SERVER['REMOTE_ADDR'] && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' ) ) {
-                $country_request = wp_remote_get( 'http://ip-api.com/json/' . $_SERVER['REMOTE_ADDR'] . '?fields=country' );
+                $country_request = wp_remote_get( 'http://ip-api.com/json/' . sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) . '?fields=country' );
                 if ( ! is_wp_error( $country_request ) && $country_request['response']['code'] == 200 ) {
                     $ip_data         = json_decode( $country_request['body'] );
                     $body['country'] = isset( $ip_data->country ) ? $ip_data->country : 'NOT SET';
@@ -674,9 +676,9 @@ class PluginInsights {
      */
     public function set_notice_options( $options = [] ) {
         $default_options      = [
-            'consent_button_text' => __( 'What we collect.', 'wpinsight' ),
-            'yes'                 => __( 'Sure, I\'d like to help', 'wpinsight' ),
-            'no'                  => __( 'No Thanks.', 'wpinsight' ),
+            'consent_button_text' => __( 'What we collect.', 'notificationx' ),
+            'yes'                 => __( 'Sure, I\'d like to help', 'notificationx' ),
+            'no'                  => __( 'No Thanks.', 'notificationx' ),
         ];
         $options              = wp_parse_args( $options, $default_options );
         $this->notice_options = $options;
@@ -692,12 +694,12 @@ class PluginInsights {
                 return;
             }
 
-            if( ! wp_verify_nonce( $_GET[ '_wpnonce' ], '_wpnonce_optin_' . $this->plugin_name ) ) {
+            if( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET[ '_wpnonce' ] ) ), '_wpnonce_optin_' . $this->plugin_name ) ) {
                 return;
             }
 
-            $plugin = sanitize_text_field( $_GET['plugin'] );
-            $action = sanitize_text_field( $_GET['plugin_action'] );
+            $plugin = sanitize_text_field( wp_unslash( $_GET['plugin'] ) );
+            $action = sanitize_text_field( wp_unslash( $_GET['plugin_action'] ) );
             if ( $action == 'yes' ) {
                 $this->schedule_tracking();
                 $this->set_is_tracking_allowed( true, $plugin );
@@ -744,11 +746,11 @@ class PluginInsights {
     public function deactivate_reasons_form_submit() {
         check_ajax_referer( 'wpins_deactivation_nonce', 'security' );
         if ( isset( $_POST['values'] ) ) {
-            $values = sanitize_text_field( $_POST['values'] );
+            $values = sanitize_text_field( wp_unslash( $_POST['values'] ) );
             update_option( 'wpins_deactivation_reason_' . $this->plugin_name, $values, 'no' );
         }
         if ( isset( $_POST['details'] ) ) {
-            $details = sanitize_text_field( $_POST['details'] );
+            $details = sanitize_text_field( wp_unslash( $_POST['details'] ) );
             update_option( 'wpins_deactivation_details_' . $this->plugin_name, $details, 'no' );
         }
         echo 'success';
@@ -783,23 +785,24 @@ class PluginInsights {
      */
     public function deactivation_reasons() {
         $form            = array();
-        $form['heading'] = __( 'Sorry to see you go', 'wpinsight' );
-        $form['body']    = __( 'Before you deactivate the plugin, would you quickly give us your reason for doing so?', 'wpinsight' );
+        $form['heading'] = __( 'Sorry to see you go', 'notificationx' );
+        $form['body']    = __( 'Before you deactivate the plugin, would you quickly give us your reason for doing so?', 'notificationx' );
 
         $form['options'] = array(
-            __( 'I no longer need the plugin', 'wpinsight' ),
+            __( 'I no longer need the plugin', 'notificationx' ),
             [
-                'label'       => __( 'I found a better plugin', 'wpinsight' ),
-                'extra_field' => __( 'Please share which plugin', 'wpinsight' ),
+                'label'       => __( 'I found a better plugin', 'notificationx' ),
+                'extra_field' => __( 'Please share which plugin', 'notificationx' ),
             ],
-            __( "I couldn't get the plugin to work", 'wpinsight' ),
-            __( 'It\'s a temporary deactivation', 'wpinsight' ),
+            __( "I couldn't get the plugin to work", 'notificationx' ),
+            __( 'It\'s a temporary deactivation', 'notificationx' ),
             [
-                'label'       => __( 'Other', 'wpinsight' ),
-                'extra_field' => __( 'Please share the reason', 'wpinsight' ),
+                'label'       => __( 'Other', 'notificationx' ),
+                'extra_field' => __( 'Please share the reason', 'notificationx' ),
                 'type'        => 'textarea',
             ],
         );
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         return apply_filters( 'wpins_form_text_' . $this->plugin_name, $form );
     }
     /**
@@ -988,7 +991,7 @@ class PluginInsights {
             $html .= '</ul></div><!-- .wpinsights-' . esc_attr( $this->plugin_name ) . '-goodbye-options -->';
         }
         $html .= '</div><!-- .wpinsights-goodbye-form-body -->';
-        $html .= '<p class="deactivating-spinner"><span class="spinner"></span> ' . __( 'Submitting form', 'wpinsight' ) . '</p>';
+        $html .= '<p class="deactivating-spinner"><span class="spinner"></span> ' . __( 'Submitting form', 'notificationx' ) . '</p>';
 
         ?>
         <script type="text/javascript">
@@ -998,7 +1001,15 @@ class PluginInsights {
                     var url = document.getElementById("wpinsights-goodbye-link-<?php echo esc_attr( $this->plugin_name ); ?>");
                     $('body').toggleClass('wpinsights-form-active-<?php echo esc_attr( $this->plugin_name ); ?>');
                     $(".wpinsights-goodbye-form-wrapper-<?php echo esc_attr( $this->plugin_name ); ?> #wpinsights-goodbye-form").fadeIn();
-                    $(".wpinsights-goodbye-form-wrapper-<?php echo esc_attr( $this->plugin_name ); ?> #wpinsights-goodbye-form").html( '<?php echo $html; ?>' + '<div class="wpinsights-goodbye-form-footer"><div class="wpinsights-goodbye-form-buttons"><a id="wpinsights-submit-form-<?php echo esc_attr( $this->plugin_name ); ?>" class="wpinsights-submit-btn" href="#"><?php esc_html_e( 'Submit and Deactivate', 'wpinsight' ); ?></a>&nbsp;<a class="wpsp-put-deactivate-btn" href="'+url+'"><?php esc_html_e( 'Just Deactivate', 'wpinsight' ); ?></a></div></div>');
+                    <?php
+                    /*
+                     * $html is assembled above with esc_html()/esc_attr() applied to every
+                     * interpolated value. It holds the radio/textarea controls of the
+                     * deactivation form, which wp_kses_post() and nx_allowed_html() would
+                     * both strip, breaking the form.
+                     */
+                    ?>
+                    $(".wpinsights-goodbye-form-wrapper-<?php echo esc_attr( $this->plugin_name ); ?> #wpinsights-goodbye-form").html( '<?php echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>' + '<div class="wpinsights-goodbye-form-footer"><div class="wpinsights-goodbye-form-buttons"><a id="wpinsights-submit-form-<?php echo esc_attr( $this->plugin_name ); ?>" class="wpinsights-submit-btn" href="#"><?php esc_html_e( 'Submit and Deactivate', 'notificationx' ); ?></a>&nbsp;<a class="wpsp-put-deactivate-btn" href="'+url+'"><?php esc_html_e( 'Just Deactivate', 'notificationx' ); ?></a></div></div>');
                     $('#wpinsights-submit-form-<?php echo esc_attr( $this->plugin_name ); ?>').on('click', function(e){
                         // As soon as we click, the body of the form should disappear
                         $("#wpinsights-goodbye-form-<?php echo esc_attr( $this->plugin_name ); ?> .wpinsights-goodbye-form-body").fadeOut();
@@ -1024,7 +1035,7 @@ class PluginInsights {
                             'action': 'deactivation_form_<?php echo esc_attr( $this->plugin_name ); ?>',
                             'values': checkedInputVal,
                             'details': details,
-                            'security': "<?php echo wp_create_nonce( 'wpins_deactivation_nonce' ); ?>",
+                            'security': "<?php echo esc_js( wp_create_nonce( 'wpins_deactivation_nonce' ) ); ?>",
                             'dataType': "json"
                         }
 

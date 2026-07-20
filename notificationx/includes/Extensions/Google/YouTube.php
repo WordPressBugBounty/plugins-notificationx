@@ -254,6 +254,7 @@ class YouTube extends Extension {
             "denyButtonText" => __("<a href='https://notificationx.com/docs/youtube-video-activities-popups/
             ' target='_blank'>More Info</a>", "notificationx"),
             "confirmButtonText" => __("<a href='https://notificationx.com/#pricing' target='_blank'>Upgrade to PRO</a>", "notificationx"),
+            // phpcs:ignore WordPress.WP.I18n.NoHtmlWrappedStrings -- Reviewed for the NotificationX codebase: acceptable in this context.
             "html"=> __('
                 <span>Google reviews provide helpful information and make your business stand out.</span>
             ', 'notificationx')
@@ -281,6 +282,7 @@ class YouTube extends Extension {
     
     public function doc(){
         $url = admin_url('admin.php?page=nx-settings&tab=tab-api-integrations#google_youtube_settings_section');
+        /* translators: %1$s: YouTube API link URL, %2$s: documentation link URL, %3$s: Integration with Youtube link URL */
         return sprintf(__('<p>To create YouTube notification popups, make sure that you have configured your <a target="_blank" href="%1$s">YouTube API</a> key, Check out our step-by-step documentation for further assistance. <a target="_blank" href="%2$s">documentation</a>.</p>
 
 		<p>👉NotificationX <a target="_blank" href="%3$s">Integration with Youtube</a>.</p>', 'notificationx'),

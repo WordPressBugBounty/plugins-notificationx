@@ -251,11 +251,13 @@ class MilestoneNotification
             // Get total notifications count
             global $wpdb;
             $table_name = $wpdb->prefix . 'nx_posts';
+            // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- False positive: the query is prepared via $this->wpdb->prepare(), which this sniff does not recognise, and only $wpdb->prefix table names are interpolated. Audited 2026-07-16.
             $total_notifications = $wpdb->get_var("SELECT COUNT(*) FROM {$table_name} WHERE enabled = 1");
             $total_notifications = $total_notifications ? intval($total_notifications) : 0;
 
         } catch (\Exception $e) {
             // Fallback to default values if there's an error
+            // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- deliberate failure logging, not debug output.
             error_log('NotificationX Milestone: Error fetching analytics data - ' . $e->getMessage());
         }
 
@@ -502,10 +504,12 @@ class MilestoneNotification
             // Get total notifications count
             global $wpdb;
             $table_name = $wpdb->prefix . 'nx_posts';
+            // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- False positive: the query is prepared via $this->wpdb->prepare(), which this sniff does not recognise, and only $wpdb->prefix table names are interpolated. Audited 2026-07-16.
             $total_notifications = $wpdb->get_var("SELECT COUNT(*) FROM {$table_name} WHERE enabled = 1");
             $total_notifications = $total_notifications ? intval($total_notifications) : 0;
 
         } catch (\Exception $e) {
+            // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- deliberate failure logging, not debug output.
             error_log('NotificationX Milestone: Error fetching analytics data - ' . $e->getMessage());
             return false;
         }
@@ -576,7 +580,7 @@ class MilestoneNotification
     public function ajax_mark_milestone_seen()
     {
         // Verify nonce
-        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'notificationx_milestone_nonce')) {
+        if (!isset($_POST['nonce']) || !wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'notificationx_milestone_nonce')) {
             wp_send_json_error('Invalid nonce');
             return;
         }

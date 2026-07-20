@@ -75,7 +75,7 @@ class ExitIntentNotification extends Extension {
         }
         echo "<style id='nx-exit-intent-section-constraint'>\n";
         if ( '' !== $vars ) {
-            echo "body.single-nx_exit_intent{" . $vars . "}\n";
+            echo "body.single-nx_exit_intent{" . esc_html( $vars ) . "}\n";
         }
         echo ".nx-exit-intent-section{width:100%!important;max-width:var(--nx-exit-width,540px)!important;margin-left:auto!important;margin-right:auto!important;}\n";
         if ( is_singular( 'nx_exit_intent' ) ) {
@@ -105,6 +105,7 @@ class ExitIntentNotification extends Extension {
             return $settings;
         }
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $resolved_id = apply_filters( 'wpml_object_id', $elementor_id, 'nx_exit_intent', true );
         $html = \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $resolved_id, false );
 
@@ -558,9 +559,11 @@ JS;
         if ( empty( $elementor_id ) ) {
             return;
         }
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $languages = apply_filters( 'wpml_active_languages', null );
         if ( is_array( $languages ) ) {
             foreach ( $languages as $lang => $val ) {
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                 $translated_id = apply_filters( 'wpml_object_id', $elementor_id, 'nx_exit_intent', false, $lang );
                 if ( $translated_id ) {
                     wp_delete_post( $translated_id, true );
@@ -2270,6 +2273,7 @@ JS;
     }
 
     public function doc() {
+        /* translators: %1$s: documentation link URL */
         return sprintf(__('
         <p>Show a targeted message at the exact moment someone is about to close your tab & bring them back into the funnel. Need help? Check out our <a target="_blank" href="%1$s">documentation</a>.</p>', 
         'notificationx'),

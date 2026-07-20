@@ -72,7 +72,10 @@ class NotificationBar extends Types {
                 isset($_COOKIE[$cookie_name]) &&
                 $_COOKIE[$cookie_name] === 'shown' &&
                 !empty($_SERVER['HTTP_REFERER']) &&
-                strpos($_SERVER['HTTP_REFERER'], $_SERVER['HTTP_HOST']) !== false) {
+                strpos(
+                    esc_url_raw(wp_unslash($_SERVER['HTTP_REFERER'])),
+                    isset($_SERVER['HTTP_HOST']) ? sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'])) : ''
+                ) !== false) {
                 return true;
             }
         }
@@ -86,8 +89,8 @@ class NotificationBar extends Types {
                 !empty($settings['daily_from_time']) &&
                 !empty($settings['daily_to_time'])) {
 
-                $from_time = strtotime(date('Y-m-d ') . date('H:i:s', strtotime($settings['daily_from_time'])));
-                $to_time = strtotime(date('Y-m-d ') . date('H:i:s', strtotime($settings['daily_to_time'])));
+                $from_time = strtotime(gmdate('Y-m-d ') . gmdate('H:i:s', strtotime($settings['daily_from_time'])));
+                $to_time = strtotime(gmdate('Y-m-d ') . gmdate('H:i:s', strtotime($settings['daily_to_time'])));
 
                 // Handle case where to_time is on the next day
                 if ($to_time < $from_time) {
@@ -105,9 +108,9 @@ class NotificationBar extends Types {
                 !empty($settings['weekly_from_time']) &&
                 !empty($settings['weekly_to_time'])) {
 
-                $current_day = strtolower(date('l', $current_time));
-                $from_time = strtotime(date('Y-m-d ') . date('H:i:s', strtotime($settings['weekly_from_time'])));
-                $to_time = strtotime(date('Y-m-d ') . date('H:i:s', strtotime($settings['weekly_to_time'])));
+                $current_day = strtolower(gmdate('l', $current_time));
+                $from_time = strtotime(gmdate('Y-m-d ') . gmdate('H:i:s', strtotime($settings['weekly_from_time'])));
+                $to_time = strtotime(gmdate('Y-m-d ') . gmdate('H:i:s', strtotime($settings['weekly_to_time'])));
 
                 // Handle case where to_time is on the next day
                 if ($to_time < $from_time) {
@@ -147,8 +150,8 @@ class NotificationBar extends Types {
                 }
 
                 // Combine current date with from/to times
-                $from_time = strtotime(date('Y-m-d ') . date('H:i:s', strtotime($custom_from_time)));
-                $to_time = strtotime(date('Y-m-d ') . date('H:i:s', strtotime($custom_to_time)));
+                $from_time = strtotime(gmdate('Y-m-d ') . gmdate('H:i:s', strtotime($custom_from_time)));
+                $to_time = strtotime(gmdate('Y-m-d ') . gmdate('H:i:s', strtotime($custom_to_time)));
 
                 // Handle overnight time ranges (e.g., 10 PM - 6 AM)
                 if ($to_time < $from_time) {

@@ -111,16 +111,21 @@ final class StyleHandler {
      * @since 1.0.2
      */
     public function write_block_css() {
-        if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'nx_style_handler_nonce' ) || ! current_user_can( 'manage_options' ) ) {
+        if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'nx_style_handler_nonce' ) || ! current_user_can( 'manage_options' ) ) {
             echo 'Invalid request';
             wp_die();
         }
 
-        $block_styles = (array) json_decode( stripslashes( $_POST['data'] ) );
+        // The payload is a JSON blob of block styles, so it cannot be run through a
+        // scalar sanitiser without destroying it. It is decoded structurally below and
+        // this endpoint is already gated on a nonce plus manage_options above.
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        $block_styles = isset( $_POST['data'] ) ? (array) json_decode( wp_unslash( $_POST['data'] ) ) : array();
 
-        if ( isset( $_POST['editorType'] ) && $_POST['editorType'] === 'edit-site' ) {
+        $editor_type = isset( $_POST['editorType'] ) ? sanitize_key( wp_unslash( $_POST['editorType'] ) ) : '';
+        if ( $editor_type === 'edit-site' ) {
             $upload_dir      = wp_upload_dir()['basedir'] . '/nx-style/';
-            $editSiteCssPath = $upload_dir . 'nx-style-' . $_POST['editorType'] . '.min.css';
+            $editSiteCssPath = $upload_dir . 'nx-style-' . $editor_type . '.min.css';
             if ( file_exists( $editSiteCssPath ) ) {
                 $existingCss = file_get_contents( $editSiteCssPath );
                 $pattern     = '~\/\*(.*?)\*\/~';
@@ -148,7 +153,7 @@ final class StyleHandler {
                 if ( ! empty( $css = $this->build_css( $finalCSSArray ) ) ) {
                     $upload_dir = wp_upload_dir()['basedir'] . '/nx-style/';
                     if ( ! file_exists( $upload_dir ) ) {
-                        mkdir( $upload_dir );
+                        wp_mkdir_p( $upload_dir );
                     }
 
                     file_put_contents( $editSiteCssPath, $css );
@@ -157,7 +162,7 @@ final class StyleHandler {
                 if ( ! empty( $css = $this->build_css( $block_styles ) ) ) {
                     $upload_dir = wp_upload_dir()['basedir'] . '/nx-style/';
                     if ( ! file_exists( $upload_dir ) ) {
-                        mkdir( $upload_dir );
+                        wp_mkdir_p( $upload_dir );
                     }
 
                     file_put_contents( $editSiteCssPath, $css );
@@ -167,9 +172,10 @@ final class StyleHandler {
             if ( ! empty( $css = $this->build_css( $block_styles ) ) ) {
                 $upload_dir = wp_upload_dir()['basedir'] . '/nx-style/';
                 if ( ! file_exists( $upload_dir ) ) {
-                    mkdir( $upload_dir );
+                    wp_mkdir_p( $upload_dir );
                 }
-                file_put_contents( $upload_dir . 'nx-style-' . abs( $_POST['id'] ) . '.min.css', $css );
+                $style_id = isset( $_POST['id'] ) ? absint( wp_unslash( $_POST['id'] ) ) : 0;
+                file_put_contents( $upload_dir . 'nx-style-' . $style_id . '.min.css', $css );
             }
         }
 
@@ -207,6 +213,7 @@ final class StyleHandler {
             if ( file_exists( $upload_dir['basedir'] . '/nx-style/nx-style-' . $post->ID . '.min.css' ) ) {
                 wp_enqueue_style( 'nx-block-style-' . $post->ID, $upload_dir['baseurl'] . '/nx-style/nx-style-' . $post->ID . '.min.css', [], substr( md5( microtime( true ) ), 0, 10 ) );
             } elseif ( function_exists( 'icl_object_id' ) ) {
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                 $default_language = apply_filters( 'wpml_default_language', null );
                 $english_version  = icl_object_id( $post->ID, 'post', false, $default_language );
                 if ( file_exists( $upload_dir['basedir'] . '/nx-style/nx-style-' . $english_version . '.min.css' ) ) {

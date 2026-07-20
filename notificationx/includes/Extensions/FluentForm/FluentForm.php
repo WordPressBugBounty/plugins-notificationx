@@ -116,10 +116,12 @@ class FluentForm extends Extension {
         $limit      = 10;
         // Prepare the query with a WHERE condition
         $query = $wpdb->prepare(
+            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- False positive: the query is prepared via $this->wpdb->prepare(), which this sniff does not recognise, and only $wpdb->prefix table names are interpolated. Audited 2026-07-16.
             "SELECT id, title FROM {$table_name} WHERE status = %s LIMIT %d",
             'published', $limit
         );
         // Execute the query and retrieve the results
+        // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- False positive: the query is prepared via $this->wpdb->prepare(), which this sniff does not recognise, and only $wpdb->prefix table names are interpolated. Audited 2026-07-16.
         $form_result = $wpdb->get_results($query);
 
         if (!empty($form_result)) {
@@ -143,10 +145,12 @@ class FluentForm extends Extension {
             $limit      = 10;
            // Prepare the query with a LIKE condition
             $query = $wpdb->prepare(
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- False positive: the query is prepared via $this->wpdb->prepare(), which this sniff does not recognise, and only $wpdb->prefix table names are interpolated. Audited 2026-07-16.
                 "SELECT id, title FROM {$table_name} WHERE title LIKE %s AND status = %s LIMIT %d",
                 '%' . $wpdb->esc_like($args['inputValue']) . '%','published',$limit
             );
             // Execute the query and retrieve the results
+            // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- False positive: the query is prepared via $this->wpdb->prepare(), which this sniff does not recognise, and only $wpdb->prefix table names are interpolated. Audited 2026-07-16.
             $form_result = $wpdb->get_results($query);
             if (!empty($form_result)) {
                 foreach ($form_result as $form) {
@@ -277,8 +281,8 @@ class FluentForm extends Extension {
             if( !empty( $form_list[1] ) ) {
                 $form = wpFluent()->table('fluentform_forms')->where('id', $form_list[1])->first();
                 // $valueFrom = date('Y-m-d',strtotime('-'.$data['display_from'].' days',time()));
-                $valueFrom = date('Y-m-d H:i:s', Helper::generate_time_string($data));
-                $valueTo = date('Y-m-d',strtotime('1 days',time()));
+                $valueFrom = gmdate('Y-m-d H:i:s', Helper::generate_time_string($data));
+                $valueTo = gmdate('Y-m-d',strtotime('1 days',time()));
                 $query = wpFluent()->table('fluentform_submissions')
                 ->where('form_id', $form->id);
                 // define('FLUENTFORM_VERSION', '5.0.6')
@@ -401,6 +405,7 @@ class FluentForm extends Extension {
 
 
     public function doc() {
+        /* translators: %1$s: Fluent Forms installed and configured link URL, %2$s: documentation link URL, %3$s: video tutorial link URL, %4$s: Display Fluent Forms Submission Alert link URL */
         return sprintf(__('
         <p>To use the campaign & form subscription data, make sure that you have <a target="_blank" href="%1$s">Fluent Forms installed and configured</a> on your website. For detailed guidelines, follow this <a target="_blank" href="%2$s">documentation</a>.</p>
 

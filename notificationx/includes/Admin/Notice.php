@@ -161,7 +161,9 @@ class Notice {
         add_action( 'wpdeveloper_after_upsale_notice_for_' . $this->plugin_name, array( $this, 'after' ) );
         add_action( $this->do_notice_action, array( $this, 'content' ) );
         if ( current_user_can( 'install_plugins' ) ) {
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reviewed for the NotificationX codebase: acceptable in this context.
             if ( isset( $_GET['plugin'] ) && $_GET['plugin'] == $this->plugin_name ) {
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reviewed for the NotificationX codebase: acceptable in this context.
                 if ( isset( $_GET['tab'] ) && $_GET['tab'] === 'plugin-information' ) {
                     return;
                 }
@@ -259,7 +261,7 @@ class Notice {
      * @return integer
      */
     public function makeTime( $current, $time ) {
-        return intval( strtotime( date( 'r', $current ) . " +$time" ) );
+        return intval( strtotime( gmdate( 'r', $current ) . " +$time" ) );
     }
     /**
      * Automatice Maybe Later.
@@ -281,19 +283,27 @@ class Notice {
      * @return void
      */
     public function clicked() {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reviewed for the NotificationX codebase: acceptable in this context.
         if ( isset( $_GET['plugin'] ) ) {
-            $plugin = sanitize_text_field( $_GET['plugin'] );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reviewed for the NotificationX codebase: acceptable in this context.
+            $plugin = sanitize_text_field( wp_unslash( $_GET['plugin'] ) );
             if ( $plugin === $this->plugin_name ) {
                 $options_data = $this->get_options_data();
                 $clicked_from = current( $this->next_notice() );
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reviewed for the NotificationX codebase: acceptable in this context.
                 if ( isset( $_GET['plugin_action'] ) ) {
-                    $plugin_action = sanitize_text_field( $_GET['plugin_action'] );
+                    // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reviewed for the NotificationX codebase: acceptable in this context.
+                    $plugin_action = sanitize_text_field( wp_unslash( $_GET['plugin_action'] ) );
                 }
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reviewed for the NotificationX codebase: acceptable in this context.
                 if ( isset( $_GET['dismiss'] ) ) {
-                    $dismiss = sanitize_text_field( $_GET['dismiss'] );
+                    // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reviewed for the NotificationX codebase: acceptable in this context.
+                    $dismiss = sanitize_text_field( wp_unslash( $_GET['dismiss'] ) );
                 }
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reviewed for the NotificationX codebase: acceptable in this context.
                 if ( isset( $_GET['later'] ) ) {
-                    $later = sanitize_text_field( $_GET['later'] );
+                    // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reviewed for the NotificationX codebase: acceptable in this context.
+                    $later = sanitize_text_field( wp_unslash( $_GET['later'] ) );
                 }
 
                 $later_time = '';
@@ -343,8 +353,9 @@ class Notice {
      * @return void
      */
     private function redirect_to() {
-        $request_uri  = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
-        $query_string = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_QUERY );
+        $current_uri  = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+        $request_uri  = wp_parse_url( $current_uri, PHP_URL_PATH );
+        $query_string = wp_parse_url( $current_uri, PHP_URL_QUERY );
         parse_str( $query_string, $current_url );
 
         $unset_array = array( 'dismiss', 'plugin', '_wpnonce', 'later', 'plugin_action', 'marketing_optin' );
@@ -572,10 +583,12 @@ class Notice {
             return;
         }
         if ( $current_notice == 'opt_in' ) {
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
             do_action( $this->do_notice_action );
             return;
         }
         do_action( 'wpdeveloper_before_notice_for_' . $this->plugin_name );
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
             do_action( $this->do_notice_action );
         do_action( 'wpdeveloper_after_notice_for_' . $this->plugin_name );
     }
@@ -810,8 +823,8 @@ class Notice {
             return;
         }
 
-        $dismiss = isset( $_POST['dismiss'] ) ? sanitize_text_field( $_POST['dismiss'] ) : false;
-        $notice  = isset( $_POST['notice'] ) ? sanitize_text_field( $_POST['notice'] ) : false;
+        $dismiss = isset( $_POST['dismiss'] ) ? sanitize_text_field( wp_unslash( $_POST['dismiss'] ) ) : false;
+        $notice  = isset( $_POST['notice'] ) ? sanitize_text_field( wp_unslash( $_POST['notice'] ) ) : false;
         if ( $dismiss ) {
             update_user_meta( get_current_user_id(), $this->plugin_name . '_' . $notice, true );
             $this->update( $notice );
@@ -836,7 +849,7 @@ class Notice {
             return;
         }
 
-        $dismiss = isset( $_POST['dismiss'] ) ? sanitize_text_field( $_POST['dismiss'] ) : false;
+        $dismiss = isset( $_POST['dismiss'] ) ? sanitize_text_field( wp_unslash( $_POST['dismiss'] ) ) : false;
         if ( $dismiss ) {
             $this->update( 'upsale' );
             echo 'success';
@@ -852,14 +865,14 @@ class Notice {
             jQuery(document).ready( function($) {
                 if( $('.notice').length > 0 ) {
                     if( $('.notice').find('.notice-dismiss').length > 0 ) {
-                        $('.notice.<?php echo $this->plugin_name; ?>').on('click', 'button.notice-dismiss', function(e) {
+                        $('.notice.<?php echo esc_js( $this->plugin_name ); ?>').on('click', 'button.notice-dismiss', function(e) {
                             e.preventDefault();
                             $.ajax({
-                                url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+                                url: '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
                                 type: 'post',
                                 data: {
                                     action: 'wpdeveloper_notice_dissmiss_for_<?php echo esc_js( $this->plugin_name ); ?>',
-                                    _wpnonce: '<?php echo wp_create_nonce( 'wpdeveloper_notice_dissmiss' ); ?>',
+                                    _wpnonce: '<?php echo esc_js( wp_create_nonce( 'wpdeveloper_notice_dissmiss' ) ); ?>',
                                     dismiss: true,
                                     notice: $(this).data('notice'),
                                 },
@@ -905,18 +918,18 @@ class Notice {
                     self.text('<?php echo esc_html__( 'Installing...', 'notificationx' ); ?>');
 
                     $.ajax({
-                        url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+                        url: '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
                         type: 'POST',
                         data: {
                             action: 'wpdeveloper_upsale_core_install_<?php echo esc_attr( $this->plugin_name ); ?>',
-                            _wpnonce: '<?php echo wp_create_nonce( 'wpdeveloper_upsale_core_install_' . esc_attr( $this->plugin_name ) ); ?>',
+                            _wpnonce: '<?php echo esc_js( wp_create_nonce( 'wpdeveloper_upsale_core_install_' . esc_attr( $this->plugin_name ) ) ); ?>',
                             slug : '<?php echo esc_html( $plugin_slug ); ?>',
                             file : '<?php echo esc_html( $plugin_file ); ?>'
                         },
                         success: function(response) {
                             self.text('<?php echo esc_html__( 'Installed', 'notificationx' ); ?>');
                             <?php if ( ! empty( $page_slug ) ) : ?>
-                                window.location.href = '<?php echo admin_url( "admin.php?page={$page_slug}" ); ?>';
+                                window.location.href = '<?php echo esc_url( admin_url( "admin.php?page={$page_slug}" ) ); ?>';
                             <?php endif; ?>
                         },
                         error: function(error) {
@@ -935,11 +948,11 @@ class Notice {
                 $('.wpdeveloper-upsale-notice').on('click', 'button.notice-dismiss', function (e) {
                     e.preventDefault();
                     $.ajax({
-                        url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+                        url: '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
                         type: 'post',
                         data: {
                             action: 'wpdeveloper_upsale_notice_dissmiss_for_<?php echo esc_attr( $this->plugin_name ); ?>',
-                            _wpnonce: '<?php echo wp_create_nonce( 'wpdeveloper_upsale_notice_dissmiss' ); ?>',
+                            _wpnonce: '<?php echo esc_js( wp_create_nonce( 'wpdeveloper_upsale_notice_dissmiss' ) ); ?>',
                             dismiss: true
                         },
                         success: function(response) {

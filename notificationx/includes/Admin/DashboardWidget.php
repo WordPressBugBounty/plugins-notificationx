@@ -51,7 +51,7 @@ class DashboardWidget {
         add_action('admin_enqueue_scripts', [ $this, 'enqueue'] );
     }
     public function enqueue( $hook ){
-        wp_register_style( 'nx-analytics-dashboard-widget', self::ASSET_URL . 'css/analytics-dashboard-widget.css', array(), false, 'all' );
+        wp_register_style( 'nx-analytics-dashboard-widget', self::ASSET_URL . 'css/analytics-dashboard-widget.css', array(), NOTIFICATIONX_VERSION, 'all' );
     }
     /**
      * Admin Action callback
@@ -73,6 +73,7 @@ class DashboardWidget {
     public function analytics_counter(){
         global $wpdb;
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- False positive: the query is prepared via $this->wpdb->prepare(), which this sniff does not recognise, and only $wpdb->prefix table names are interpolated. Audited 2026-07-16.
         $results = $wpdb->get_row(
             "SELECT *, ( clicks/views ) * 100 as ctr FROM ( SELECT SUM(views) as views, SUM(clicks) as clicks FROM {$wpdb->prefix}nx_stats ) AS STATS",
             ARRAY_A

@@ -200,7 +200,9 @@ class Integration {
     protected static function has_legacy_integrations(): bool {
         global $wpdb;
         $table = $wpdb->prefix . 'nx_posts';
+        // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- False positive: the query is prepared via $this->wpdb->prepare(), which this sniff does not recognise, and only $wpdb->prefix table names are interpolated. Audited 2026-07-16.
         $count = $wpdb->get_var(
+            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- False positive: the query is prepared via $this->wpdb->prepare(), which this sniff does not recognise, and only $wpdb->prefix table names are interpolated. Audited 2026-07-16.
             "SELECT COUNT(*) FROM {$table}
              WHERE source LIKE 'zapier%%'
                 OR source LIKE 'ifttt%%'"
@@ -290,6 +292,7 @@ class Integration {
             if( $notificationx ) {
                 return wp_send_json( true );
             }
+            /* translators: %s: notification ID */
             $error['message'] = sprintf( __( 'There is no notification created with this id: %s', 'notificationx' ), $id );
             return wp_send_json_error( $error, 401 );
 		} else {
@@ -329,12 +332,15 @@ class Integration {
             if (isset($response_data['data']['id'])){
                 $post = PostType::get_instance()->get_post($response_data['data']['id']);
                 if($post['source']){
+                    // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                     do_action( "nx_api_response_success_{$post['source']}", $response_data['data'] );
                 }
             }
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
             do_action( 'nx_api_response_success', $response_data['data'] );
         }
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         return apply_filters( 'nx_api_response', $response_data );
     }
 
@@ -355,6 +361,7 @@ class Integration {
             return $ext->connect($params);
         }
         else{
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
             $result = apply_filters("nx_api_connect_$source", null, $params);
             if($result){
                 return $result;

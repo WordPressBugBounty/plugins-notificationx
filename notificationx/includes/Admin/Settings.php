@@ -78,6 +78,7 @@ class Settings extends UsabilityDynamicsSettings {
      */
     function get_form_data() {
         $data     = NotificationX::get_instance()->normalize( $this->settings_form() );
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $settings = apply_filters('nx_settings_page_settings', $this->get( 'settings', [] ));
 
         $data['current_page'] = 'settings';
@@ -102,6 +103,7 @@ class Settings extends UsabilityDynamicsSettings {
 
 
     public function settings_form( $nx_id = 0 ) {
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         do_action( 'nx_before_settings_fields' );
         $wp_roles  = GlobalFields::get_instance()->normalize_fields( $this->get_roles() );
         $site_name = get_bloginfo( 'name' );
@@ -127,7 +129,9 @@ class Settings extends UsabilityDynamicsSettings {
                 'label' => __( 'Save Settings', 'notificationx' ),
                 'class' => 'save-settings',
             ],
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
             'tabs'          => apply_filters('nx_settings_tab', [
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                 'tab-general'                => apply_filters('nx_settings_tab_general', [
                     'id'       => 'tab-general',
                     'label'    => __( 'General', 'notificationx' ),
@@ -157,6 +161,7 @@ class Settings extends UsabilityDynamicsSettings {
                     ],
                     ]
                 ),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                 'advanced-settings-tab'      => apply_filters('nx_settings_tab_advanced', [
                     'id'       => 'tab-advanced-settings',
                     'label'    => __( 'Advanced Settings', 'notificationx' ),
@@ -281,6 +286,7 @@ class Settings extends UsabilityDynamicsSettings {
                     ],
                     ]
                 ),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                 'email-analytics-reporting'  => apply_filters('nx_settings_tab_email_analytics', [
                     'label'    => __( 'Analytics & Reporting', 'notificationx' ),
                     'id'       => 'email-analytics-reporting',
@@ -334,6 +340,7 @@ class Settings extends UsabilityDynamicsSettings {
                                 ),
                             ),
                         ),
+                        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                         'entries_mail_receiver' => apply_filters( 'nx_settings_entries_mail_receiver', array(
                             'name'     => 'entries_mail_receiver',
                             'priority' => 15,
@@ -360,6 +367,7 @@ class Settings extends UsabilityDynamicsSettings {
                                     'name'     => 'entries_mail_subject',
                                     'type'     => 'text',
                                     'label'    => __( 'Email Subject', 'notificationx' ),
+                                    /* translators: %s: site name */
                                     'default'  => sprintf( __( 'New Entry Received on "%s"', 'notificationx' ), $site_name ),
                                     'priority' => 2,
                                     'rules'    => Rules::is( 'enable_entries_mail', true ),
@@ -460,6 +468,7 @@ class Settings extends UsabilityDynamicsSettings {
                                     'name'     => 'reporting_subject',
                                     'type'     => 'text',
                                     'label'    => __( 'Reporting Email Subject', 'notificationx' ),
+                                    /* translators: %s: site name */
                                     'default'  => sprintf( __( 'Weekly Engagement Summary of “%s”', 'notificationx' ), $site_name ),
                                     'priority' => 4,
                                     'disable'  => true,
@@ -494,6 +503,7 @@ class Settings extends UsabilityDynamicsSettings {
                     ],
                     ]
                 ),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                 'entries'  => apply_filters('nx_settings_tab_entries', [
                     'label'    => __( 'Entries', 'notificationx' ),
                     'id'       => 'entries',
@@ -509,6 +519,7 @@ class Settings extends UsabilityDynamicsSettings {
                         ],
                     ]
                 ),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                 'cache_settings_tab'         => apply_filters('nx_settings_tab_cache', [
                     'id'       => 'tab-cache-settings',
                     'label'    => __( 'Cache Settings', 'notificationx' ),
@@ -549,6 +560,7 @@ class Settings extends UsabilityDynamicsSettings {
                     ],
                     ]
                 ),
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                 'tab-miscellaneous-settings' => apply_filters('nx_settings_tab_miscellaneous', [
                     'id'       => 'tab-miscellaneous-settings',
                     'label'    => __( 'Miscellaneous', 'notificationx' ),
@@ -612,6 +624,7 @@ class Settings extends UsabilityDynamicsSettings {
             );
         }
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $settings = apply_filters( 'nx_settings_configs', $settings );
         return $settings;
     }
@@ -660,6 +673,7 @@ class Settings extends UsabilityDynamicsSettings {
         $roles    = $this->get_selected_roles( $settings );
         $settings = array_merge( $settings, $roles );
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $settings = apply_filters( 'nx_settings', $settings );
 
         foreach ( $remove_before_save as $key ) {
@@ -674,6 +688,7 @@ class Settings extends UsabilityDynamicsSettings {
 
         $this->set( 'settings', $settings );
         delete_transient( 'nx_get_field_names' );
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         do_action( 'nx_settings_saved', $settings );
         return true;
     }
@@ -721,6 +736,7 @@ class Settings extends UsabilityDynamicsSettings {
             $analytics_roles = [ $analytics_roles ];
         }
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         return apply_filters('nx_role_management', [
             'notification_view_roles' => array_values( array_unique( array_merge( [ 'administrator' ], $notification_view_roles ) ) ),
             'notification_roles'      => array_values( array_unique( array_merge( [ 'administrator' ], $notification_roles ) ) ),

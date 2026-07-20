@@ -1,0 +1,43 @@
+{
+  "name": "wpdeveloper/notificationx",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "Md. Alimuzzaman Alim",
+      "email": "alim@wpdeveloper.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/WPDevelopers/lib-settings"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/WPDevelopers/lib-utility"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/WPDevelopers/query-builder"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/priyomukul/wp-notice"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "wpdeveloper/lib-settings": "dev-master",
+    "wpdeveloper/query-builder": "dev-main",
+    "priyomukul/wp-notice": "v2.x-dev"
+  },
+  "autoload": {
+    "exclude-from-classmap": [
+        "blocks/controls"
+    ],
+    "classmap": [
+      "includes",
+      "blocks"
+    ]
+  }
+}

@@ -80,7 +80,8 @@ class Blocks {
             'notificationx-block-editor',
             plugins_url( $index_js, __FILE__ ),
             array_merge($asset_file['dependencies'], ['notificationx-block-controls']),
-            $asset_file['version']
+            $asset_file['version'],
+            false // Editor script: must load in the head, which is the existing default.
         );
 
         $editor_css = 'notificationx/editor.css';
@@ -158,7 +159,8 @@ class Blocks {
             'notificationx-countdown-editor',
             plugins_url( 'countdown/index.js', __FILE__ ),
             array_merge( $countdown_asset['dependencies'], [ 'notificationx-block-controls' ] ),
-            $countdown_asset['version']
+            $countdown_asset['version'],
+            false // Editor script: must load in the head, which is the existing default.
         );
         wp_set_script_translations( 'notificationx-countdown-editor', 'notificationx' );
 
@@ -204,6 +206,7 @@ class Blocks {
             wp_enqueue_script('notificationx-block-frontend');
         }
         if ( is_admin() || $this->isRestUrl() ) {
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
             do_action( 'nx_ignore_analytics' );
         }
         $nx_id      = ! empty( $block_attributes['nx_id'] ) ? esc_attr($block_attributes['nx_id']) : '';
@@ -216,6 +219,7 @@ class Blocks {
     }
 
     function gutenberg_examples_dynamic_render_callback( $block_attributes, $content ) {
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         do_action( 'nx_ignore_analytics' );
         $nx_id          = ! empty( $block_attributes['nx_id'] ) ? esc_attr($block_attributes['nx_id']) : '';
         $product_id     = ! empty( $block_attributes['product_id'] ) ? $block_attributes['product_id'] : '';
@@ -225,7 +229,7 @@ class Blocks {
             add_filter('nx_is_preview',function(){
                 return true;
             });
-            $product_id = rand();
+            $product_id = wp_rand();
         }
         $shortcode = do_shortcode( "[notificationx_inline post_type='{$post_type}' product_id='{$product_id}' id='{$nx_id}' show_link=false]" );
         if ( $shortcode ) {

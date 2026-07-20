@@ -69,8 +69,8 @@ class CoreInstaller {
 
         $this->raise_limits();
 
-        $plugin_slug = (isset($_POST['slug'])) ? sanitize_text_field( $_POST['slug'] ) : '';
-        $plugin_file = (isset($_POST['file'])) ? sanitize_file_name( $_POST['file'] ) : '';
+        $plugin_slug = (isset($_POST['slug'])) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
+        $plugin_file = (isset($_POST['file'])) ? sanitize_file_name( wp_unslash( $_POST['file'] ) ) : '';
 
         if (empty($plugin_file) || empty($plugin_slug)) {
             wp_send_json_error(__('You don\'t have set any slug and file name to install the plugins', 'notificationx'));
@@ -124,8 +124,12 @@ class CoreInstaller {
     public function raise_limits() {
         wp_raise_memory_limit('admin');
         if (wp_is_ini_value_changeable('max_execution_time')) {
+            // Downloading and unpacking the free plugin can exceed the default limit.
+            // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
             ini_set('max_execution_time', 0);
         }
+        // Downloading and unpacking the free plugin can exceed the default limit.
+        // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
         @set_time_limit(0);
     }
 }

@@ -911,11 +911,11 @@ class PopupNotification extends Extension {
      */
     private function get_user_ip() {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            return $_SERVER['HTTP_CLIENT_IP'];
+            return sanitize_text_field(wp_unslash($_SERVER['HTTP_CLIENT_IP']));
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            return $_SERVER['HTTP_X_FORWARDED_FOR'];
+            return sanitize_text_field(wp_unslash($_SERVER['HTTP_X_FORWARDED_FOR']));
         } else {
-            return $_SERVER['REMOTE_ADDR'] ?? '';
+            return isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) : '';
         }
     }
 
@@ -1043,6 +1043,7 @@ class PopupNotification extends Extension {
     }
 
     public function doc(){
+        /* translators: %1$s: step-by-step guides link URL, %2$s: tutorial link URL, %3$s: URL */
         return sprintf(__('<p>Create compelling Announcements that capture visitor interest and help you generate more leads on your WordPress site. Need help? Check out our <a href="%1$s" target="_blank">step-by-step guides</a> to build impactful Announcements.</p>
         <p>🎦 Watch the quick video <a target="_blank" href="%2$s">tutorial</a> for an easy walk-through.</p>
         <p><strong>Recommended Blogs:</strong></p>

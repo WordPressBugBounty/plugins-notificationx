@@ -111,6 +111,7 @@ class EDD extends Extension {
 
 
     public function multiorder_combine($data, $settings) {
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $should_combine = apply_filters('nx_should_combine', true, $data, $settings);
         if (!$should_combine || empty($settings['combine_multiorder']) || $settings['combine_multiorder'] != '1') {
             return $data;
@@ -144,23 +145,26 @@ class EDD extends Extension {
                 );
             } else {
                 $singular = !empty($settings['combine_multiorder_text'])
-                    ? __($settings['combine_multiorder_text'], 'notificationx')
+                    ? $settings['combine_multiorder_text']
                     : __('more product', 'notificationx');
 
                 $plural = !empty($settings['combine_multiorder_text_plural'])
-                    ? __($settings['combine_multiorder_text_plural'], 'notificationx')
+                    ? $settings['combine_multiorder_text_plural']
                     : __('more products', 'notificationx');
 
-                // Proper plural handling
+                // Both forms are already resolved here - either a user-entered
+                // override or an already-translated default - so they are never
+                // catalogue msgids. _n() would find no entry and fall back to
+                // exactly this choice, so make it explicit.
                 $more_product_text = sprintf(
-                    _n($singular, $plural, $item, 'notificationx'),
+                    1 == $item ? $singular : $plural,
                     $item
                 );
                 $products_more_title = sprintf('%d %s', $item, $more_product_text);
             }
 
-            // translators: %1$s: title, %2$s: combined more products text.
             $items[$key]['title'] = sprintf(
+                /* translators: %1$s: product title, %2$s: combined "and N more products" text */
                 __('%1$s & %2$s', 'notificationx'),
                 $items[$key]['title'],
                 $products_more_title
@@ -253,7 +257,7 @@ class EDD extends Extension {
     public function get_payments( $days, $amount ) {
         // $date       = '-' . intval( $days ) . ' days';
         // $start_date = strtotime( $date );
-        $from   = date('Y-m-d H:i:s', $days);
+        $from   = gmdate('Y-m-d H:i:s', $days);
 
         $amount = $amount > 0 ? $amount : -1;
 
@@ -395,6 +399,7 @@ class EDD extends Extension {
     /* #endregion */
 
     public function doc(){
+        /* translators: %1$s: Easy Digital Downloads installed & activated link URL, %2$s: documentation link URL, %3$s: Integration with Easy Digital Downloads link URL, %4$s: NotificationX Increase Sales on WordPress link URL */
         return sprintf(__('<p>Make sure that you have <a href="%1$s" target="_blank">Easy Digital Downloads installed & activated</a> to use its campaign & product sales data. For further assistance, check out our step by step <a target="_blank" href="%2$s">documentation</a>.</p>
 		<p>👉 NotificationX <a target="_blank" href="%3$s">Integration with Easy Digital Downloads</a></p>
 		<p><strong>Recommended Blog:</strong></p>
